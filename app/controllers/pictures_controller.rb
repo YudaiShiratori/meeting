@@ -1,5 +1,7 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
+  before_action :login, only: [:new, :edit, :show, :destroy]
+
 
   # GET /pictures
   # GET /pictures.json
@@ -71,5 +73,11 @@ class PicturesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def picture_params
       params.require(:picture).permit(:image, :content, :image_cache)
+    end
+    
+    def login
+      if not logged_in?
+        redirect_to new_session_path
+      end
     end
 end
