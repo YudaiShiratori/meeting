@@ -5,5 +5,9 @@ class User < ApplicationRecord
   before_validation { email.downcase! }
   
   has_secure_password
-  validates :password, presence: true 
+  validates :password, presence: true
+  
+  has_many :pictures, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_pictures, through: :favorites, source: :picture
 end

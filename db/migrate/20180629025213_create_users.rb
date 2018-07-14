@@ -5,6 +5,10 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :email
       t.string :password_digest
       t.timestamps
+  
+      t.references :picture
+      t.references :favorite_picture
+      
     end
   end
 end
