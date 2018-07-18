@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @favorite_pictures = @user.favorite_pictures
   end
   
   def destroy
@@ -24,7 +25,7 @@ class UsersController < ApplicationController
   private
   
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :picture_id)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
   
 end

@@ -7,3 +7,17 @@
 <% else %>
   <%= link_to "ログイン", new_session_path %>
 <% end %>
+
+
+<br>
+
+
+<% @favorite_pictures.each do |picture| %>
+　<p>お気に入りした写真の一覧</p>
+  <p>
+    <tr>
+      <td><%= image_tag picture.image, class: "photo" %></td>
+      <td><%= link_to '詳細', picture_path(picture.id) %></td>
+    </tr>
+  </p>
+<% end %>
