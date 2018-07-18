@@ -10,6 +10,14 @@
   <%= @picture.content %>
 </p>
 
+<P>コメント一覧</P>
+<div id="comment_area">
+  <%= render partial: 'comments/index', locals: { comments: @comments, picture: @picture } %>
+</div>
+<div id="comment_form">
+  <%= render partial: 'comments/form', locals: { comment: @comment, picture: @picture } %>
+</div>
+
 <% unless @picture.user == current_user %>
   <% if @favorite.present? %>
     <%= link_to 'お気に入り解除', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
@@ -20,4 +28,3 @@
 
 <%= link_to 'Edit', edit_picture_path(@picture) %>
 <%= link_to 'Back', pictures_path %>
-

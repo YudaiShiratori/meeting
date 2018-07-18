@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
-  get 'favorites/create'
 
-  get 'favorites/destroy'
-
-  get 'sessions/new'
-
-  resources :pictures
+  resources :pictures do
+    resources :comments
+  end
   
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: '/inbox'
