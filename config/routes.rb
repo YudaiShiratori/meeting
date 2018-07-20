@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   resources :pictures do
+    collection do
+      get :top
+    end
     resources :comments
   end
   
@@ -13,5 +16,7 @@ Rails.application.routes.draw do
   resources :sessions, only:[:new, :create, :destroy]
   
   resources :favorites, only: [:create, :destroy]
+  
+  root to: 'pictures#top'
   
 end
