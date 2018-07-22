@@ -14,4 +14,8 @@ Rails.application.routes.draw do
   
   resources :favorites, only: [:create, :destroy]
   
+  resources :tops, only: [:index]
+  
+  root to: 'top#index'
+  
 end

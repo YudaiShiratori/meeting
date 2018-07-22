@@ -3,9 +3,9 @@
 <p>メールアドレス: <%= @user.email %></p>
 
 <% if logged_in? %>
-  <%= link_to '一覧へ', pictures_path %>
+  <%= link_to 'みんなの写真へ', pictures_path, class:"btn btn-outline btn-xl js-scroll-trigger" %>
 <% else %>
-  <%= link_to "ログイン", new_session_path %>
+  <%= link_to "ログイン", new_session_path, class:"btn btn-outline btn-xl js-scroll-trigger" %>
 <% end %>
 
 
@@ -13,11 +13,11 @@
 
 
 <% @favorite_pictures.each do |picture| %>
-　<p>お気に入りした写真の一覧</p>
+　<p>あなたがお気に入りした写真</p>
   <p>
     <tr>
       <td><%= image_tag picture.image, class: "photo" %></td>
-      <td><%= link_to '詳細', picture_path(picture.id) %></td>
+      <td><%= link_to '詳細', picture_path(picture.id), class:"btn btn-outline btn-xl js-scroll-trigger" %></td>
     </tr>
   </p>
 <% end %>
