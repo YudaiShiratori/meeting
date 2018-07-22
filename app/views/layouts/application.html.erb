@@ -3,26 +3,63 @@
   <head>
     <title>BlogInsta</title>
     <%= csrf_meta_tags %>
+    
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>New Age - Start Bootstrap Theme</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="device-mockups/device-mockups.min.css">
+
+    <!-- Custom styles for this template -->
+    <link href="css/new-age.min.css" rel="stylesheet">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
-  <body>
+
+    
+  <% if controller.controller_name != "tops" %>
+    <body class="usiro">
+  <% else %>
+    <body>
+  <% end %>
     
     <%# flash.each do |key, value| %>
       <%#= content_tag(:div, value, class: "#{key}") %>
     <%# end %>
     
     <% if logged_in? %>
-      <%= link_to "Profile", user_path(current_user.id) %>
-      <%= link_to "Logout", session_path(current_user.id), method: :delete %>
+      <%= link_to "Profile", user_path(current_user.id), class:"btn btn-outline btn-xl js-scroll-trigger" %>
+      <%= link_to "Logout", session_path(current_user.id), method: :delete, class:"btn btn-outline btn-xl js-scroll-trigger" %>
     <% else %>
-      <%= link_to "Sign up", new_user_path %>
-      <%= link_to "Login", new_session_path %>
+      <%= link_to "Sign up", new_user_path, class:"btn btn-outline btn-xl js-scroll-trigger" %>
+      <%= link_to "Login",  new_session_path, class:"btn btn-outline btn-xl js-scroll-trigger" %>
+      <%= link_to "Top", tops_path , class:"btn btn-outline btn-xl js-scroll-trigger" %>
     <% end %>
     
-    <%= yield %>
+    
+    <!--<header class="masthead">-->
+      <div class="container">
+      　 <%= yield %>
+      </div>
+    <!--</header>-->
     
   </body>
 </html>

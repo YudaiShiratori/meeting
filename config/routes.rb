@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
 
   resources :pictures do
-    collection do
-      get :top
-    end
     resources :comments
   end
   
@@ -17,6 +14,8 @@ Rails.application.routes.draw do
   
   resources :favorites, only: [:create, :destroy]
   
-  root to: 'pictures#top'
+  resources :tops, only: [:index]
+  
+  root to: 'top#index'
   
 end

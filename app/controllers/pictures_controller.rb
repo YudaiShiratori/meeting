@@ -1,6 +1,7 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
-  before_action :login, only: [:new, :edit, :show, :destroy]
+  before_action :login, only: [:new, :edit, :show, :destroy, :update]
+  before_action :authenticate_picture, only: [:edit, :destroy, :update]
 
 
   # GET /pictures
@@ -36,7 +37,7 @@ class PicturesController < ApplicationController
     respond_to do |format|
       if @picture.save
         PictureMailer.picture_mail(@picture).deliver
-        format.html { redirect_to @picture, notice: 'Picture was successfully created.' }
+        format.html { redirect_to @picture, notice: '写真を投稿しました.' }
         format.json { render :show, status: :created, location: @picture }
       else
         format.html { render :new }
@@ -81,8 +82,14 @@ class PicturesController < ApplicationController
     end
     
     def login
-      if not logged_in?
+      if not logged_in? 
         redirect_to new_session_path
+      end
+    end
+    
+    def authenticate_picture
+      if current_user.id != @picture.user.id
+         redirect_to pictures_path
       end
     end
 end
