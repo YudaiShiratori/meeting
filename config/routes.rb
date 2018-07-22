@@ -16,6 +16,6 @@ Rails.application.routes.draw do
   
   resources :tops, only: [:index]
   
-  root to: 'top#index'
+  root to: 'tops#index'
   
 end
