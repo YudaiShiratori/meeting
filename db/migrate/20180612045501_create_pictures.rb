@@ -4,6 +4,7 @@ class CreatePictures < ActiveRecord::Migration[5.1]
       t.text :image
       t.text :content
       
+      t.integer :user_id
       t.references :user
       t.references :favorite_user
       
