@@ -1,0 +1,18 @@
+<% if logged_in? %> 
+
+    <div id="calendar">
+      <script>
+        $(document).ready(function() {
+          $('#calendar').fullCalendar(
+            );
+        });
+      </script>
+    </div>
+
+    <br>
+    
+    <%= link_to 'Back', user_path(current_user.id) %>
+    
+<% else %>
+    <% redirect_to new_session_path %>
+<% end %>

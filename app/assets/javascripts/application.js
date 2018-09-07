@@ -14,4 +14,8 @@
 //= require turbolinks
 //= require jquery/dist/jquery.js
 //= require bootstrap/dist/js/bootstrap.min
+//= require moment 
+//= require fullcalendar
+//= require fullcalendar/locale-all
 //= require_tree .
+
