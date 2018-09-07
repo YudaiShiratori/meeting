@@ -40,10 +40,6 @@
   <% else %>
     <body>
   <% end %>
-    
-    <%# flash.each do |key, value| %>
-      <%#= content_tag(:div, value, class: "#{key}") %>
-    <%# end %>
       
     <% if logged_in? %>
       <%= link_to "Profile", user_path(current_user.id), class:"btn btn-outline btn-xl js-scroll-trigger" %>
@@ -52,6 +48,10 @@
       <%= link_to "Sign up", new_user_path, class:"btn btn-outline btn-xl js-scroll-trigger" %>
       <%= link_to "Login",  new_session_path, class:"btn btn-outline btn-xl js-scroll-trigger" %>
       <%= link_to "Top", tops_path, class:"btn btn-outline btn-xl js-scroll-trigger" %>
+    <% end %>
+    
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "#{key}") %>
     <% end %>
     
       

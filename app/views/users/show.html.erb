@@ -1,23 +1,11 @@
-<h1><%= @user.name %>のページ</h1>
+<h1>マイページ</h1>
 
-<p>メールアドレス: <%= @user.email %></p>
+<h3>ようこそ、<%= @user.name %>さん</h3>
 
-<% if logged_in? %>
-  <%= link_to 'みんなの写真へ', pictures_path, class:"btn btn-outline btn-xl js-scroll-trigger" %>
-<% else %>
-  <%= link_to "ログイン", new_session_path, class:"btn btn-outline btn-xl js-scroll-trigger" %>
-<% end %>
-
-
-<br>
-
-
-<% @favorite_pictures.each do |picture| %>
-　<p>あなたがお気に入りした写真</p>
-  <p>
-    <tr>
-      <td><%= image_tag picture.image, class: "photo" %></td>
-      <td><%= link_to '詳細', picture_path(picture.id), class:"btn btn-outline btn-xl js-scroll-trigger" %></td>
-    </tr>
-  </p>
+<% if logged_in? && current_user.admin == true %>
+  <h2>あなたは面接官です</h2>
+  <%#= link_to '空き日程を投稿', new_schedule_path %>
+<% elsif logged_in? && current_user.admin == false %>
+  <h2>あなたは面接者です</h2>
+  <%= link_to '面接相手を探す', users_path %>
 <% end %>
