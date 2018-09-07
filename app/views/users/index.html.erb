@@ -1,0 +1,26 @@
+<% if current_user.try(:admin?) %>
+  <h2>面接者一覧</h2>
+  <% @interviewees.each do |interviewee| %>
+    <p>
+      <tr>
+        <td><%= interviewee.name %></td>
+        <td><%= link_to '詳細', user_path(interviewee.id) %></td>
+      </tr>
+    </p>
+  <% end %>
+  
+<% else %>
+  <h2>面接官一覧</h2>
+  <% @interviewers.each do |interviewer| %>
+    <p>
+      <tr>
+        <td><%= interviewer.name %></td>
+        <td><%= link_to '詳細', user_path(interviewer.id) %></td>
+      </tr>
+    </p>
+  <% end %>
+<% end %>
+
+<br>
+
+<%= link_to 'Back', user_path(current_user.id) %>
