@@ -4,7 +4,9 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: '/inbox'
   end
   
-  resources :users
+  resources :users do
+    resources :profile
+  end
   
   resources :sessions, only:[:new, :create, :destroy]
   

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BlogInsta</title>
+    <title>meetingApp</title>
     <%= csrf_meta_tags %>
     
     
@@ -9,8 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
-    <title>New Age - Start Bootstrap Theme</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -28,6 +26,12 @@
     <!-- Custom styles for this template -->
     <link href="css/new-age.min.css" rel="stylesheet">
     
+    <link rel="stylesheet" href="fullcalendar.min.css" type="text/css">
+    <script src="moment.min.js" type="text/javascript"></script>
+　　<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="jquery-ui.custom.min.js" type="text/javascript"></script>
+    <script src="fullcalendar.min.js" type="text/javascript"></script>
+    <script src="ja.js" type="text/javascript"></script
     
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -55,7 +59,6 @@
       <%= content_tag(:div, value, class: "#{key}") %>
     <% end %>
     
-      
     <div class="container">
       <%= yield %>
     </div>
