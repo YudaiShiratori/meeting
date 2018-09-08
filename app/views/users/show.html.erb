@@ -4,7 +4,7 @@
 
 <% if logged_in? && current_user.admin == true %>
   <h2>あなたは面接官です</h2>
-  <%#= link_to '空き日程を投稿', new_schedule_path %>
+  <%= link_to '空き日程を投稿', new_schedule_path %>
 <% elsif logged_in? && current_user.admin == false %>
   <h2>あなたは面接者です</h2>
   <%= link_to '面接相手を探す', users_path %>
