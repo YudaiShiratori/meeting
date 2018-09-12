@@ -9,4 +9,5 @@ class User < ApplicationRecord
    has_many :schedules, dependent: :destroy
    has_many :match_users, through: :schedule, source: :user
    
+   mount_uploader :image, ImageUploader
 end

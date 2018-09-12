@@ -23,14 +23,31 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
   
-  def destroy
-    
+  def edit
+    @user = User.find(params[:id])
+  end
+  
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to mypage_user_path,
+      notice: 'マイページを編集しました'
+    else
+      render 'edit', notice: 'a'
+    end
+  end
+  
+  def mypage
+    @user = User.find(params[:id])
   end
   
   private
   
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :admin)
+    params.require(:user).permit(
+      :name, :email, :password, :password_confirmation, :admin,
+      :introduction, :image, :image_cache
+    )
   end
   
 end
