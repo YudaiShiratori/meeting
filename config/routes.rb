@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
   
   resources :users do
-    resources :profile
+    get :mypage, on: :member
   end
   
   resources :sessions, only:[:new, :create, :destroy]

@@ -6,9 +6,8 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :password_digest
       t.timestamps
       
-      t.integer :picture_id
-      t.references :picture
-      t.references :favorite_picture
+      t.text :image
+      t.text :introduction
       
     end
   end

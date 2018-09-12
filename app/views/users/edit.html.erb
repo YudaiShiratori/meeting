@@ -1,6 +1,7 @@
-<h1>Sign up</h1>
+<h3><%= @user.name %>さん</h3>
 
 <%= form_with(model: @user, local: true) do |f| %>  
+  
   <p>
     <%= f.label :name %>
     <%= f.text_field :name %>
@@ -21,12 +22,17 @@
     <%= f.password_field :password_confirmation %>
   </P>
   
-  <p>
-    あなたはどっち？
-    <%= f.select :admin, [["面接官", true], ["面接者", false]] %>
+  
+  <p class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image, id: :feed_image %>
   </p>
   
-  <br>
-  <%= f.submit "ユーザー作成" %>
+  <p class="field">
+    <%= f.label :introduction %>
+    <%= f.text_area :introduction %>
+  </p>
+  
+  <%= f.submit "マイページを編集する" %>
   
 <% end %>
