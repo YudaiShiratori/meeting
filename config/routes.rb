@@ -16,4 +16,9 @@ Rails.application.routes.draw do
   
   resources :schedules
   
+  root to: 'calendar#index'
+  get 'calendar/index'
+  get 'schedules', to: 'schedule#show'
+  post 'schedules/create', to: 'schedule#create'
+  
 end
