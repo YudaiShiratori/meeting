@@ -4,6 +4,7 @@ class CreateSchedules < ActiveRecord::Migration[5.1]
       t.string :title
       t.datetime :start
       t.datetime :end
+      t.integer  :interviewer_id
 
       t.timestamps
     end
