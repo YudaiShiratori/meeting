@@ -38,7 +38,23 @@ $(document).ready(function() {
         },
         select: function(startDate, endDate) {
           alert('selected ' + startDate.format() + ' to ' + endDate.format());
-        }
+        },
+        events: [
+          {
+            title  : 'event1',
+            start  : '2018-09-20'
+          },
+          {
+            title  : 'event2',
+            start  : '2018-09-15',
+            end    : '2018-09-17'
+          },
+          {
+            title  : 'event3',
+            start  : '2018-09-09T12:30:00',
+            allDay : false // will make the time show
+          }
+        ]
   });
 });
 
