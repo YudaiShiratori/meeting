@@ -1,20 +1,20 @@
 Rails.application.routes.draw do
-  
-  if Rails.env.development?
-    mount LetterOpenerWeb::Engine, at: '/inbox'
-  end
+  root to: 'tops#index'
   
   resources :users do
     get :mypage, on: :member
+    get '/logout' => 'sessions#destroy'
   end
   
   resources :sessions, only:[:new, :create, :destroy]
   
   resources :tops, only: [:index]
   
-  root to: 'tops#index'
-  
   resources :schedules
+  
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: '/inbox'
+  end
   
   root to: 'calendar#index'
   get 'calendar/index'
