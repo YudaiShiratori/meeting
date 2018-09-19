@@ -66,8 +66,6 @@ gem 'bcrypt', '3.1.11'
 gem 'font-awesome-rails'
 
 
-gem 'fullcalendar-rails'
+gem 'fullcalendar-rails' 
 gem 'momentjs-rails'
-
-gem 'jquery-rails' 
-gem 'jquery-ui-rails'
+gem 'jquery-rails'
