@@ -1,32 +1,35 @@
-<h1>Sign up</h1>
-
-<%= form_with(model: @user, local: true) do |f| %>  
-  <p>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </P>
-
-  <P>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </P>  
-
-  <P>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </P>
-
-  <P>
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-  </P>
-  
-  <p>
-    あなたはどっち？
-    <%= f.select :admin, [["面接官", true], ["面接者", false]] %>
-  </p>
-  
-  <br>
-  <%= f.submit "ユーザー作成" %>
-  
-<% end %>
+<div class="container-fluid">
+  <article class="container col-md-4">
+    <h1>Sign up</h1>
+    <%= form_with(model: @user, local: true) do |f| %>  
+      <p class="col-">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </P>
+    
+      <P>
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+      </P>  
+    
+      <P>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+      </P>
+    
+      <P>
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation %>
+      </P>
+      
+      <p>
+        あなたはどっち？
+        <%= f.select :admin, [["面接官", true], ["面接者", false]] %>
+      </p>
+      
+      <br>
+      <%= f.submit "ユーザー作成" %>
+      
+    <% end %>
+  </article>
+</div>
