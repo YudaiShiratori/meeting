@@ -27,12 +27,16 @@
       <%= f.file_field :image, id: :feed_image %>
     </h5>
     
-    <p class="field">
-      <%= f.label :introduction %>
-      <%= f.text_area :introduction, :style=>"row:30;" %>
-    </p>
+    <h5 class="field">
+      <%= f.label :introduction %>どんな人ですか？
+      <%= f.text_area :introduction, size: "100x10", class: "form-control" %>
+    </h5>
     
+    <br>
     <%= f.submit "マイページを編集する", class: "btn btn-success" %>
     
   <% end %>
+  
+  <br>
+  <%= link_to 'トップへ', tops_path %> 
 </article>

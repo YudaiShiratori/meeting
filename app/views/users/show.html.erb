@@ -5,10 +5,10 @@
   <% if logged_in? && current_user.admin == true %>
     <h5>あなたは<strong>面接官ユーザー</strong>です</h5>
     </br>
-    <%= button_to '空き日程を投稿', new_schedule_path, class:"btn btn-info" %>
+    <%= button_to '空き日程を投稿', new_schedule_path, method: :get, class:"btn btn-info" %>
   <% elsif logged_in? && current_user.admin == false %>
     <h5>あなたは<strong>面接者ユーザー</strong>です</h5>
     </br>
-    <%= button_to '面接相手を探す', users_path, class:"btn btn-info" %>
+    <%= button_to '面接相手を探す', users_path, method: :get, class:"btn btn-info" %>
   <% end %>
 </article>
