@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :login, only: [:edit, :show, :mypage]
+  before_action :logout, only: [:new]
   
   def index
     @interviewers = User.where(admin: true)
@@ -33,18 +35,12 @@ class UsersController < ApplicationController
       redirect_to mypage_user_path,
       notice: 'マイページを編集しました'
     else
-      render 'edit', notice: 'a'
+      render 'edit', notice: 'エラー'
     end
   end
   
   def mypage
     @user = User.find(params[:id])
-  end
-  
-  def destroy
-    session.delete(:user_id)
-    flash[:notice] = 'ログアウトしました'
-    redirect_to new_session_path
   end
   
   private
@@ -54,6 +50,20 @@ class UsersController < ApplicationController
       :name, :email, :password, :password_confirmation, :admin,
       :introduction, :image, :image_cache
     )
+  end
+  
+  def login
+    if not logged_in?
+      redirect_to new_session_path
+      flash[:danger] = 'ログインしてください'
+    end
+  end
+  
+  def logout
+    if logged_in?
+      session.delete(:user_id)
+      flash[:danger] = 'ログアウトしました'
+    end
   end
   
 end

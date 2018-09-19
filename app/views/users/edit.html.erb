@@ -1,4 +1,7 @@
 <article class="container col-md-4 col-xs-4">
+  <% flash.each do |key, value| %>
+    <p><%= content_tag(:div, value, class: "#{key}") %></p>
+  <% end %>
   <h3><%= @user.name %>さん</h3>
   <%= form_with(model: @user, local: true) do |f| %>  
     <h5>
