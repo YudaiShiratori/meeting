@@ -1,32 +1,33 @@
-<h1>Sign up</h1>
-
-<%= form_with(model: @user, local: true) do |f| %>  
-  <p>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </P>
-
-  <P>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </P>  
-
-  <P>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </P>
-
-  <P>
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-  </P>
+<article class="container col-md-4 col-xs-4">
+  <h1>新規登録</h1>
+  <%= form_with(model: @user, local: true) do |f| %>  
+    <h5>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </h5>
   
-  <p>
-    あなたはどっち？
-    <%= f.select :admin, [["面接官", true], ["面接者", false]] %>
-  </p>
+    <h5>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </h5>  
   
-  <br>
-  <%= f.submit "ユーザー作成" %>
+    <h5>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </h5>
   
-<% end %>
+    <h5>
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
+    </h5>
+    
+    <h4>
+      あなたはどっち？
+      <%= f.select :admin, [["面接官ユーザー", true], ["面接者ユーザー", false]] %>
+    </h4>
+    
+    <br>
+    <%= f.submit "ユーザー作成", class: "btn btn-success" %>
+    
+  <% end %>
+</article>

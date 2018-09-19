@@ -15,7 +15,7 @@
     <p>
       <tr>
         <td><%= interviewer.name %></td>
-        <td><%#= link_to '詳細' %></td>
+        <td><%= link_to '詳細', mypage_user_path(interviewer.id) %></td>
       </tr>
     </p>
   <% end %>
