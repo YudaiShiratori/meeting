@@ -1,5 +1,4 @@
-<h3>ようこそ、<%= @user.name %>さん</h3>
-<P>このページが他のユーザーから見えるページです</P>
+<h3><%= @user.name %>面接官のページ</h3>
 
 <div class="icon">
   <%= image_tag @user.image %>
@@ -10,4 +9,7 @@
   <%= @user.introduction %>
 </h4>
 
-<%= link_to 'マイページを編集する', edit_user_path(current_user.id) %>
+<% if logged_in? && current_user.try(:user_id) == current_user.id %>
+  <h5>*このページが応募ユーザーから見えるページです</h5>
+<% end %>
+<%= button_to 'マイページを編集する', edit_user_path(current_user.id), class: "btn btn-info" %>

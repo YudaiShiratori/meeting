@@ -1,38 +1,38 @@
-<h3><%= @user.name %>さん</h3>
-
-<%= form_with(model: @user, local: true) do |f| %>  
+<article class="container col-md-4 col-xs-4">
+  <h3><%= @user.name %>さん</h3>
+  <%= form_with(model: @user, local: true) do |f| %>  
+    <h5>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </h5>
   
-  <p>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </P>
-
-  <P>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </P>  
-
-  <P>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </P>
-
-  <P>
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-  </P>
+    <h5>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </h5>  
   
+    <h5>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </h5>
   
-  <p class="field">
-    <%= f.label :image %>
-    <%= f.file_field :image, id: :feed_image %>
-  </p>
-  
-  <p class="field">
-    <%= f.label :introduction %>
-    <%= f.text_area :introduction %>
-  </p>
-  
-  <%= f.submit "マイページを編集する" %>
-  
-<% end %>
+    <h5>
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
+    </h5>
+    
+    
+    <h5 class="field">
+      <%= f.label :image %>
+      <%= f.file_field :image, id: :feed_image %>
+    </h5>
+    
+    <p class="field">
+      <%= f.label :introduction %>
+      <%= f.text_area :introduction, :style=>"row:30;" %>
+    </p>
+    
+    <%= f.submit "マイページを編集する", class: "btn btn-success" %>
+    
+  <% end %>
+</article>
