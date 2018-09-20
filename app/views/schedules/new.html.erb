@@ -1,12 +1,10 @@
-<% if logged_in? %> 
-    <br>
+<%= form_with(model: @user, local: true) do |f| %>  
+    <h5>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </h5>
     
-    <input type="datetime_select">
-
-    <br>
+    <%= f.submit "ユーザー作成", class: "btn btn-success" %>
     
-    <%= link_to 'Back', user_path(current_user.id) %>
-    
-<% else %>
-    <% redirect_to new_session_path %>
 <% end %>
+<%= link_to 'Back', user_path(current_user.id) %>

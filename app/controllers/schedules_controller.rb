@@ -1,14 +1,17 @@
 class SchedulesController < ApplicationController
-  before_action :set_schedule, only: [:show, :edit, :update, :destroy] 
+  before_action :set_schedule, only: [:show, :edit, :update, :destroy]
+  before_action :login, only: [:new, :edit, :show, :destroy, :update]
+  before_action :authenticate_schedule, only: [:edit, :destroy, :update]
 
   def index
     @schedules = Schedule.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml { render :xml => @schedules }
-      format.json { render :json => @schedules }
-    end
+  end
+  
+  def show
+    # @favorite = current_user.favorites.find_by(schedule_id: @schedule.id)
+    
+    @comment = @schedule.comments.build
+    @comments = @schedule.comments
   end
 
   def new
@@ -17,35 +20,20 @@ class SchedulesController < ApplicationController
 
   def edit
   end
-  
-    def show
-    @schedule = schedule.all
-    # render :json => @schedule
-    respond_to do |format|
-      format.json {
-        render json:
-        @schedule.to_json(
-          only: [:title, :start, :end]
-        )
-      }
-    end
-  end
 
   def create
-    schedule = Schedule.new
-    schedule.attributes = {
-      title: params[:title],
-      start: params[:start],
-      end: params[:end],
-    }
-    Schedule.save
+    @schedule = Schedule.new(schedule_params)
+    @schedule.user_id = current_user.id
+
     respond_to do |format|
-      format.json {
-        render json:
-        @schedulr.to_json(
-          only: [:title, :start, :end]
-        )
-      }
+      if @schedule.save
+        ScheduleMailer.schedule_mail(@schedule).deliver
+        format.html { redirect_to @schedule, notice: '写真を投稿しました.' }
+        format.json { render :show, status: :created, location: @schedule }
+      else
+        format.html { render :new }
+        format.json { render json: @schedule.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -71,14 +59,22 @@ class SchedulesController < ApplicationController
 
   private
     def set_schedule
-      @schedule = schedule.find(params[:id])
+      @schedule = Schedule.find(params[:id])
     end
 
     def schedule_params
-      params.require(:schedule).permit(
-        :title,
-        :start,
-        :end
-      )
+      params.require(:schedule).permit(:start, :end, :user_id)
+    end
+    
+    def login
+      if not logged_in? 
+        redirect_to new_session_path
+      end
+    end
+    
+    def authenticate_schedule
+      if current_user.id != @schedule.user.id
+         redirect_to schedules_path
+      end
     end
 end
