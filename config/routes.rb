@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   
   resources :tops, only: [:index]
   
-  resources :schedules, only: [:create, :update, :destroy]
+  resources :schedules
   
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: '/inbox'

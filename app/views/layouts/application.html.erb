@@ -46,8 +46,12 @@
       
     <header>
       <% if logged_in? %>
-        <%= link_to "投稿 OR 探す", user_path(current_user.id), class:"btn btn-outline btn-xl js-scroll-trigger" %>
-        <%= link_to "マイページ", mypage_user_path(current_user.id), class:"btn btn-outline btn-xl js-scroll-trigger" %>
+        <% if controller.action_name != "show" %>
+          <%= link_to "投稿 OR 探す", user_path(current_user.id), class:"btn btn-outline btn-xl js-scroll-trigger" %>
+        <% end %>
+        <% if (controller.action_name != "mypage") && (controller.action_name != "edit") %>
+          <%= link_to "マイページ", mypage_user_path(current_user.id), class:"btn btn-outline btn-xl js-scroll-trigger" %>
+        <% end %>
         <%= link_to "ログアウト", user_logout_path(current_user.id), method: :delete, class:"btn btn-outline btn-xl js-scroll-trigger" %>
       <% else %>
         <%= link_to "新規登録", new_user_path, class:"btn btn-outline btn-xl js-scroll-trigger" %>
