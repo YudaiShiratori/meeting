@@ -1,4 +1,4 @@
 class Schedule < ApplicationRecord
   belongs_to :user
-  has_one :apointment, dependent: :destroy
+  has_one :appointment, dependent: :destroy
 end

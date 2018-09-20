@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ApointmentsControllerTest < ActionDispatch::IntegrationTest
+class AppointmentTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
