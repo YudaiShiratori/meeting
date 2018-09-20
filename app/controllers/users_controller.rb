@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :mypage] 
-  before_action :login, only: [:edit, :show, :mypage]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :mypage, :mypage_edit] 
+  before_action :login, only: [:edit, :show, :mypage, :mypage_edit]
   before_action :logout, only: [:new]
   
   def index
@@ -38,6 +38,9 @@ class UsersController < ApplicationController
   end
   
   def mypage
+  end
+  
+  def mypage_edit
   end
   
   private

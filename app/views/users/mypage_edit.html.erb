@@ -1,0 +1,16 @@
+<h3><%= @user.name %>さん</h3>
+<%= form_with(model: @user, local: true) do |f| %> 
+　<h5 class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image, id: :feed_image %>
+  </h5>
+  
+  <h5 class="field">
+    <%= f.label :introduction %>どんな人ですか？
+    <%= f.text_area :introduction, size: "100x10", class: "form-control" %>
+  </h5>
+  
+  <br>
+  <%= f.submit "マイページを編集する", class: "btn btn-success" %>
+  
+<% end %>

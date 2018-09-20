@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   
   resources :users do
     get :mypage, on: :member
+    get :mypage_edit, on: :member
     get '/logout' => 'sessions#destroy'
   end
   

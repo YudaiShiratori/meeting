@@ -63,7 +63,7 @@ class SchedulesController < ApplicationController
     end
 
     def schedule_params
-      params.require(:schedule).permit(:start, :end, :user_id)
+      params.require(:schedule).permit(:start, :end, :user_id, :message)
     end
     
     def login
