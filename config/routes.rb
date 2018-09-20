@@ -11,15 +11,15 @@ Rails.application.routes.draw do
   
   resources :tops, only: [:index]
   
-  resources :schedules
+  resources :schedules, only: [:create, :update, :destroy]
   
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: '/inbox'
   end
   
-  root to: 'calendar#index'
-  get 'calendar/index'
-  get 'schedules', to: 'schedule#show'
-  post 'schedules/create', to: 'schedule#create'
+  # root to: 'calendar#index'
+  # get 'calendar/index'
+  # get 'schedules', to: 'schedule#show'
+  # post 'schedules/create', to: 'schedule#create'
   
 end
