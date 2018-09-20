@@ -1,0 +1,66 @@
+<p>
+  <%= form_with(model: @user, local: true) do |f| %>  
+      <div>
+        <h5>
+          <%= f.label :monday %>月曜日:
+          <input type="number" name="start" min="06" max="23">時
+          ~
+          <input type="number" name="end" min="07" max="24">時
+        </h5>
+      </div>
+      <div>
+        <h5>
+          <%= f.label :tuesday %>火曜日:
+          <input type="number" name="start" min="06" max="23">時
+          ~
+          <input type="number" name="end" min="07" max="24">時
+        </h5>
+      </div>
+      <div>
+        <h5>
+          <%= f.label :wednesday %>水曜日:
+          <input type="number" name="start" min="06" max="23">時
+          ~
+          <input type="number" name="end" min="07" max="24">時
+        </h5>
+      </div>
+      <div>
+        <h5>
+          <%= f.label :thursday %>木曜日:
+          <input type="number" name="start" min="06" max="23">時
+          ~
+          <input type="number" name="end" min="07" max="24">時
+        </h5>
+      </div>
+      <div>
+        <h5>
+          <%= f.label :friday %>金曜日:
+          <input type="number" name="start" min="06" max="23">時
+          ~
+          <input type="number" name="end" min="07" max="24">時
+        </h5>
+      </div>
+      <div>
+        <h5>
+          <%= f.label :saturday %>土曜日:
+          <input type="number" name="start" min="06" max="23">時
+          ~
+          <input type="number" name="end" min="07" max="24">時
+        </h5>
+      </div>
+      <div>
+        <h5>
+          <%= f.label :sunday %>日曜日:
+          <input type="number" name="start" min="06" max="23">時
+          ~
+          <input type="number" name="end" min="07" max="24">時
+        </h5>
+      </div>
+       
+      <div>
+        <%= f.submit "日程投稿", class: "btn btn-success" %>
+      </div>
+      
+  <% end %>
+</p>
+<%= link_to 'Back', user_path(current_user.id) %>
