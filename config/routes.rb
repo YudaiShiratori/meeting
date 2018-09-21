@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   
   resources :users do
     get :mypage, on: :member
+    get :mypage_edit, on: :member
     get '/logout' => 'sessions#destroy'
   end
   
@@ -16,9 +17,9 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: '/inbox'
   end
   
-  root to: 'calendar#index'
-  get 'calendar/index'
-  get 'schedules', to: 'schedule#show'
-  post 'schedules/create', to: 'schedule#create'
+  # root to: 'calendar#index'
+  # get 'calendar/index'
+  # get 'schedules', to: 'schedule#show'
+  # post 'schedules/create', to: 'schedule#create'
   
 end

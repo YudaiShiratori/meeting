@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :login, only: [:edit, :show, :mypage]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :mypage, :mypage_edit] 
+  before_action :login, only: [:edit, :show, :mypage, :mypage_edit]
   before_action :logout, only: [:new]
   
   def index
@@ -22,15 +23,12 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = User.find(params[:id])
   end
   
   def edit
-    @user = User.find(params[:id])
   end
   
   def update
-    @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to mypage_user_path,
       notice: 'マイページを編集しました'
@@ -40,10 +38,15 @@ class UsersController < ApplicationController
   end
   
   def mypage
-    @user = User.find(params[:id])
+  end
+  
+  def mypage_edit
   end
   
   private
+  def set_user
+    @user = User.find(params[:id])
+  end
   
   def user_params
     params.require(:user).permit(

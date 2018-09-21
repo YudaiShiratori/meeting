@@ -24,7 +24,6 @@
       <%= f.password_field :password_confirmation %>
     </h5>
     
-    
     <h5 class="field">
       <%= f.label :image %>
       <%= f.file_field :image, id: :feed_image %>
@@ -41,5 +40,5 @@
   <% end %>
   
   <br>
-  <%= link_to 'トップへ', tops_path %> 
+  <%= link_to 'マイページへ', mypage_user_path(current_user.id) %> 
 </article>
