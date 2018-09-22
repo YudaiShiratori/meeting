@@ -15,17 +15,8 @@ ActiveRecord::Schema.define(version: 20180920085103) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "apointments", force: :cascade do |t|
-    t.boolean "presence", default: true
-    t.bigint "schedule_id"
-    t.bigint "interviewee_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["schedule_id"], name: "index_apointments_on_schedule_id"
-  end
-
   create_table "appointments", force: :cascade do |t|
-    t.boolean "presence", default: true
+    t.boolean "presence", default: false
     t.integer "schedule_id"
     t.integer "interviewee_id"
     t.text "message"
@@ -34,11 +25,10 @@ ActiveRecord::Schema.define(version: 20180920085103) do
   end
 
   create_table "schedules", force: :cascade do |t|
-    t.text "message"
+    t.string "messgae"
     t.datetime "start"
     t.datetime "end"
     t.integer "schedule_id"
-    t.datetime "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
