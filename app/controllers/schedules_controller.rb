@@ -1,7 +1,7 @@
 class SchedulesController < ApplicationController
   before_action :set_schedule, only: [:show, :edit, :update, :destroy]
   before_action :login, only: [:new, :edit, :show, :destroy, :update]
-  before_action :authenticate_schedule, only: [:edit, :destroy, :update]
+  # before_action :authenticate_schedule, only: [:edit, :destroy, :update]
 
   def index
     @schedules = Schedule.all
@@ -29,8 +29,8 @@ class SchedulesController < ApplicationController
   end
 
   def update
-    if @schedule.update
-      redirect_to user_path(@user.id)
+    if @schedule.update(schedule_params)
+      redirect_to user_path(current_user.id)
     else
       render 'new'
     end
@@ -53,7 +53,8 @@ class SchedulesController < ApplicationController
       params.require(:schedule).permit(:start, :end, :user_id, :schedule_id,
       :getu_start, :getu_end, :ka_start, :ka_end, :sui_start, :sui_end,
       :moku_start, :moku_end, :kin_start, :kin_end, 
-      :doyou_start, :doyou_end, :niti_start, :niti_end
+      :doyou_start, :doyou_end, :niti_start, :niti_end,
+      eachschedule_items_attributes: [:start, :schedule_id, :user_id]
       )
     end
     
@@ -63,9 +64,9 @@ class SchedulesController < ApplicationController
       end
     end
     
-    def authenticate_schedule
-      if current_user.id != @schedule.user.id
-         redirect_to schedules_path
-      end
-    end
+    # def authenticate_schedule
+    #   if current_user.id != @schedule.user.id
+    #     redirect_to schedules_path
+    #   end
+    # end
 end

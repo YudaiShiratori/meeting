@@ -1,4 +1,5 @@
 class AppointmentsController < ApplicationController
+  
   def create
     appointment = current_user.appointment.create(schedule_id: params[:schedule_id])
     redirect_to schedules_url, notice: "#{appointment.schedule.user.name}との面接練習を予約しました"

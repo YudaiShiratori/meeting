@@ -10,7 +10,60 @@
   <!--make schedule-->
 </div>
 
-<%# if logged_in? && current_user.try(:user_id) == current_user.id %>
+<% if @schedule.present? %>
+  <h3>自分の登録日程
+    <% if @schedule.getu_start.present? %>
+      <div>
+        月曜日：
+        <%= @schedule.getu_start %>時～
+        <%= @schedule.getu_end %>時
+      </div>
+    <% end %>
+    <% if @schedule.ka_start.present? %>
+      <div>
+        火曜日：
+        <%= @schedule.ka_start %>時～
+        <%= @schedule.ka_end %>時
+      </div>
+    <% end %>
+    <% if @schedule.sui_start.present? %>
+      <div>
+        水曜日：
+        <%= @schedule.sui_start %>時～
+        <%= @schedule.sui_end %>時
+      </div>
+    <% end %>
+    <% if @schedule.moku_start.present? %>
+      <div>
+        木曜日：
+        <%= @schedule.moku_start %>時～
+        <%= @schedule.moku_end %>時
+      </div>
+    <% end %>
+    <% if @schedule.kin_start.present? %>
+      <div>
+        金曜日：
+        <%= @schedule.kin_start %>時～
+        <%= @schedule.kin_end %>時
+      </div>
+    <% end %>
+    <% if @schedule.doyou_start.present? %>
+      <div>
+        土曜日：
+        <%= @schedule.doyou_start %>時～
+        <%= @schedule.doyou_end %>時
+      </div>
+    <% end %>
+    <% if @schedule.niti_start.present? %>
+      <div>
+        日曜日：
+        <%= @schedule.niti_start %>時～
+        <%= @schedule.niti_end %>時
+      </div>
+    <% end %>
+<% end %>
+    
+<% if logged_in? && current_user.try(:user_id) == current_user.id %>
   <h5>*このページが応募ユーザーから見えるページです</h5>
   <%= button_to 'マイページを編集する', edit_user_path(current_user.id), method: :get, class: "btn btn-info" %>
-<%# end %>
+<% end %>

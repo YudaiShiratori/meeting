@@ -58,7 +58,7 @@
               <%= @schedule.niti_end %>時
             </div>
           <% end %>
-          <%= button_to '空き日程を編集', new_schedule_path(current_user.id),
+          <%= button_to '空き日程を編集', edit_schedule_path(current_user.id),
           method: :get, class:"btn btn-info" %>
      <% else %>
         <%= button_to '空き日程を編集', new_schedule_path(current_user.id), 
@@ -70,6 +70,7 @@
     <h5>あなたは<strong>面接者ユーザー</strong>です</h5>
     </br>
     <%= button_to '面接相手を探す', users_path, method: :get, class:"btn btn-info" %>
+          
   <% end %>
   
      

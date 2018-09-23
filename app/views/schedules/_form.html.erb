@@ -1,66 +1,70 @@
 <p>
-  <%= form_with(model: @schedule, local: true) do |f| %>  
+  <% flash.each do |key, value| %>
+    <p><%= content_tag(:div, value, class: "#{key}") %></p>
+  <% end %>
+  <%= form_with(model: @schedule, local: true) do |f| %>
       <div>
         <h5>
-          <%= f.label :monday %>月曜日:
-          <input type="number" name="start" min="06" max="23">時
+          月曜日:
+          <%= f.number_field 'getu_start', in: 6...23 %>時
           ~
-          <input type="number" name="end" min="07" max="24">時
+          <%= f.number_field 'getu_end', in: 7...24 %>時
         </h5>
       </div>
       <div>
         <h5>
-          <%= f.label :tuesday %>火曜日:
-          <input type="number" name="start" min="06" max="23">時
+          火曜日:
+          <%= f.number_field 'ka_start',  in: 6...23 %>時
           ~
-          <input type="number" name="end" min="07" max="24">時
+          <%= f.number_field 'ka_end',  in: 7...24 %>時
         </h5>
       </div>
       <div>
         <h5>
-          <%= f.label :wednesday %>水曜日:
-          <input type="number" name="start" min="06" max="23">時
+          水曜日:
+          <%= f.number_field 'sui_start',  in: 6...23 %>時
           ~
-          <input type="number" name="end" min="07" max="24">時
+          <%= f.number_field 'sui_end',  in: 7...24 %>時
         </h5>
       </div>
       <div>
         <h5>
-          <%= f.label :thursday %>木曜日:
-          <input type="number" name="start" min="06" max="23">時
+          木曜日:
+          <%= f.number_field 'moku_start',  in: 6...23 %>時
           ~
-          <input type="number" name="end" min="07" max="24">時
+          <%= f.number_field 'moku_end',  in: 7...24 %>時
         </h5>
       </div>
       <div>
         <h5>
-          <%= f.label :friday %>金曜日:
-          <input type="number" name="start" min="06" max="23">時
+          金曜日:
+          <%= f.number_field 'kin_start',  in: 6...23 %>時
           ~
-          <input type="number" name="end" min="07" max="24">時
+          <%= f.number_field 'kin_end',  in: 7...24 %>時
         </h5>
       </div>
       <div>
         <h5>
-          <%= f.label :saturday %>土曜日:
-          <input type="number" name="start" min="06" max="23">時
+          土曜日:
+          <%= f.number_field 'doyou_start',  in: 6...23 %>時
           ~
-          <input type="number" name="end" min="07" max="24">時
+          <%= f.number_field 'doyou_end',  in: 7...24 %>時
         </h5>
       </div>
       <div>
         <h5>
-          <%= f.label :sunday %>日曜日:
-          <input type="number" name="start" min="06" max="23">時
+          日曜日:
+          <%= f.number_field 'niti_start',  in: 6...23 %>時
           ~
-          <input type="number" name="end" min="07" max="24">時
+          <%= f.number_field 'niti_end',  in: 7...24 %>時
         </h5>
       </div>
-       
+    <%# end %>
+    
       <div>
         <%= f.submit "日程投稿", class: "btn btn-success" %>
       </div>
-      
+     
   <% end %>
 </p>
 <%= link_to 'Back', user_path(current_user.id) %>

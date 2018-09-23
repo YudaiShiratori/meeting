@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   
   resources :users do
     get :mypage, on: :member
-    get :myschedule, on: :member
     get '/logout' => 'sessions#destroy'
-    post :myschedule_create, on: :collection
+    # get :myschedule, on: :member
+    # post :myschedule_create, on: :collection
   end
   
   resources :sessions, only:[:new, :create, :destroy]
@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   resources :tops, only: [:index]
   
   resources :schedules
+  
+  resources :appointment, only: [:create, :destroy]
   
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: '/inbox'

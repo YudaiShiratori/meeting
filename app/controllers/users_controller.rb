@@ -41,23 +41,21 @@ class UsersController < ApplicationController
   def mypage
   end
   
-  def myschedule
-    @user = User.new
-    @user.schedules.build
-    @schedule = Schedule.new
-  end
+  # def myschedule
+  #   @user = User.new
+  #   @user.schedules.build
+  #   @schedule = Schedule.new
+  # end
   
-  def myschedule_create
-    # require 'pry'; binding.pry
-    
-    @schedule = Schedule.new(schedule_params)
-    if @schedule.save(schedule_params)
-      redirect_to mypage_user_path,
-      notice: 'マイページを編集しました'
-    else
-      render 'myschedule', notice: 'エラー'
-    end
-  end
+  # def myschedule_create
+  #   @schedule = Schedule.new(schedule_params)
+  #   if @schedule.save(schedule_params)
+  #     redirect_to mypage_user_path,
+  #     notice: 'マイページを編集しました'
+  #   else
+  #     render 'myschedule', notice: 'エラー'
+  #   end
+  # end
   
   private
   def set_user
@@ -67,20 +65,9 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(
       :name, :email, :password, :password_confirmation, :admin,
-      :introduction, :image, :image_cache,
-      schedule_items_attributes: [:start, :end, :schedule_id, :user_id,
-      :getu_start, :getu_end, :ka_start, :ka_end, :sui_start, :sui_end,
-      :moku_start, :moku_end, :kin_start, :kin_end, 
-      :doyou_start, :doyou_end, :niti_start, :niti_end
-      ]
+      :introduction, :image, :image_cache
+      # schedule_items_attributes: [:start, :end, :schedule_id, :user_id]
     )
-  end
-  
-  def schedule_params
-    params.require(:schedule).permit(:start, :end, :schedule_id, :user_id,
-      :getu_start, :getu_end, :ka_start, :ka_end, :sui_start, :sui_end,
-      :moku_start, :moku_end, :kin_start, :kin_end, 
-      :doyou_start, :doyou_end, :niti_start, :niti_end)
   end
   
   def login
