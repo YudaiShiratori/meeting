@@ -1,8 +1,6 @@
 <p>
-  <% flash.each do |key, value| %>
-    <p><%= content_tag(:div, value, class: "#{key}") %></p>
-  <% end %>
-  <%= form_with(model: @schedule, local: true) do |f| %>
+  <%= form_with(local: true, url: myschedule_create_users_path) do |f| %>
+    <!--<%# f.fields_for :schedule do |s| %>-->
       <div>
         <h5>
           月曜日:
@@ -48,7 +46,7 @@
           土曜日:
           <%= f.number_field 'doyou_start',  in: 6...23 %>時
           ~
-          <%= f.number_field 'doyou_end',  in: 7...24 %>時
+          <%= f.number_field 'dotou_end',  in: 7...24 %>時
         </h5>
       </div>
       <div>
