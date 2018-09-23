@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   
   resources :users do
     get :mypage, on: :member
-    get :mypage_edit, on: :member
+    get :myschedule, on: :member
     get '/logout' => 'sessions#destroy'
+    post :myschedule_create, on: :collection
   end
   
   resources :sessions, only:[:new, :create, :destroy]

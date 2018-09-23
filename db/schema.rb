@@ -10,27 +10,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180920085103) do
+ActiveRecord::Schema.define(version: 20180923064836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "appointments", force: :cascade do |t|
     t.boolean "presence", default: false
-    t.integer "schedule_id"
+    t.bigint "schedule_id"
     t.integer "interviewee_id"
     t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["schedule_id"], name: "index_appointments_on_schedule_id"
+  end
+
+  create_table "myschdules", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "schedule_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "schedules", force: :cascade do |t|
-    t.string "messgae"
     t.datetime "start"
     t.datetime "end"
-    t.integer "schedule_id"
+    t.bigint "user_id"
+    t.text "message"
+    t.integer "getu_start"
+    t.integer "getu_end"
+    t.integer "ka_start"
+    t.integer "ka_end"
+    t.integer "sui_start"
+    t.integer "sui_end"
+    t.integer "moku_start"
+    t.integer "moku_end"
+    t.integer "kin_start"
+    t.integer "kin_end"
+    t.integer "doyou_start"
+    t.integer "doyou_end"
+    t.integer "niti_start"
+    t.integer "niti_end"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_schedules_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -7,7 +7,12 @@ class User < ApplicationRecord
    has_secure_password
    
    has_many :schedules, dependent: :destroy
+   has_many :myschedules, dependent: :destroy
+   has_many :myschedule_schedules, through: :myschedules, source: :schedule
+   
    has_many :match_users, through: :schedule, source: :user
    
    mount_uploader :image, ImageUploader
+   
+   accepts_nested_attributes_for :schedules, allow_destroy: true
 end

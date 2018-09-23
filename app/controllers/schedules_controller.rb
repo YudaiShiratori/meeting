@@ -8,8 +8,6 @@ class SchedulesController < ApplicationController
   end
   
   def show
-    # @favorite = current_user.favorites.find_by(schedule_id: @schedule.id)
-    
     @comment = @schedule.comments.build
     @comments = @schedule.comments
   end
@@ -23,29 +21,18 @@ class SchedulesController < ApplicationController
 
   def create
     @schedule = Schedule.new(schedule_params)
-    @schedule.user_id = current_user.id
-
-    respond_to do |format|
-      if @schedule.save
-        ScheduleMailer.schedule_mail(@schedule).deliver
-        format.html { redirect_to @schedule, notice: '写真を投稿しました.' }
-        format.json { render :show, status: :created, location: @schedule }
-      else
-        format.html { render :new }
-        format.json { render json: @schedule.errors, status: :unprocessable_entity }
-      end
+    if @schedule.save(validate: false)
+      redirect_to user_path(current_user.id)
+    else
+      render 'new', notice: "エラー"
     end
   end
 
   def update
-    respond_to do |format|
-      if @schedule.update(schedule_params)
-        format.html { redirect_to @schedule, notice: 'schedule was successfully updated.' }
-        format.json { render :show, status: :ok, location: @schedule }
-      else
-        format.html { render :edit }
-        format.json { render json: @schedule.errors, status: :unprocessable_entity }
-      end
+    if @schedule.update
+      redirect_to user_path(@user.id)
+    else
+      render 'new'
     end
   end
 
@@ -63,7 +50,11 @@ class SchedulesController < ApplicationController
     end
 
     def schedule_params
-      params.require(:schedule).permit(:start, :end, :user_id, :message)
+      params.require(:schedule).permit(:start, :end, :user_id, :schedule_id,
+      :getu_start, :getu_end, :ka_start, :ka_end, :sui_start, :sui_end,
+      :moku_start, :moku_end, :kin_start, :kin_end, 
+      :doyou_start, :doyou_end, :niti_start, :niti_end
+      )
     end
     
     def login
