@@ -21,6 +21,15 @@ class SchedulesController < ApplicationController
 
   def create
     @schedule = Schedule.new(schedule_params)
+      a = params["getu_start"].to_i
+      b = params["getu_end"].to_i
+      c = b.slice!(-1)
+      [a..c].each do
+        @eachschedule = Eachschedule.create(schedule_params)
+      end
+    
+    
+    
     if @schedule.save(validate: false)
       redirect_to user_path(current_user.id)
     else
@@ -54,7 +63,7 @@ class SchedulesController < ApplicationController
       :getu_start, :getu_end, :ka_start, :ka_end, :sui_start, :sui_end,
       :moku_start, :moku_end, :kin_start, :kin_end, 
       :doyou_start, :doyou_end, :niti_start, :niti_end,
-      eachschedule_items_attributes: [:start, :schedule_id, :user_id]
+      eachschedule_items_attributes: [:start,:schedule_id, :user_id]
       )
     end
     
