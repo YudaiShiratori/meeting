@@ -1,74 +1,76 @@
-<p>
-  <% flash.each do |key, value| %>
-    <p><%= content_tag(:div, value, class: "#{key}") %></p>
-  <% end %>
-  
-  <p>面談が可能な日程を教えてください</p>
-  ＊一回の時間は1時間単位です
-  ＊6時～23時始まりで入力してください
-  <%= form_with(model: @schedule, local: true) do |f| %>
-      <div>
-        <h5>
-          月曜日:
-          <%= f.number_field 'getu_start', in: 6...23 %>時
-          ~
-          <%= f.number_field 'getu_end', in: 7...24 %>時
-        </h5>
-      </div>
-      <div>
-        <h5>
-          火曜日:
-          <%= f.number_field 'ka_start',  in: 6...23 %>時
-          ~
-          <%= f.number_field 'ka_end',  in: 7...24 %>時
-        </h5>
-      </div>
-      <div>
-        <h5>
-          水曜日:
-          <%= f.number_field 'sui_start',  in: 6...23 %>時
-          ~
-          <%= f.number_field 'sui_end',  in: 7...24 %>時
-        </h5>
-      </div>
-      <div>
-        <h5>
-          木曜日:
-          <%= f.number_field 'moku_start',  in: 6...23 %>時
-          ~
-          <%= f.number_field 'moku_end',  in: 7...24 %>時
-        </h5>
-      </div>
-      <div>
-        <h5>
-          金曜日:
-          <%= f.number_field 'kin_start',  in: 6...23 %>時
-          ~
-          <%= f.number_field 'kin_end',  in: 7...24 %>時
-        </h5>
-      </div>
-      <div>
-        <h5>
-          土曜日:
-          <%= f.number_field 'doyou_start',  in: 6...23 %>時
-          ~
-          <%= f.number_field 'doyou_end',  in: 7...24 %>時
-        </h5>
-      </div>
-      <div>
-        <h5>
-          日曜日:
-          <%= f.number_field 'niti_start',  in: 6...23 %>時
-          ~
-          <%= f.number_field 'niti_end',  in: 7...24 %>時
-        </h5>
-      </div>
-    <%# end %>
+<article class="container col-md-4 col-xs-4">
+    <% flash.each do |key, value| %>
+      <p><%= content_tag(:div, value, class: "#{key}") %></p>
+    <% end %>
     
-      <div>
-        <%= f.submit "日程投稿", class: "btn btn-success" %>
-      </div>
-     
-  <% end %>
-</p>
-<%= link_to 'Back', user_path(current_user.id) %>
+    <p>面談が可能な日程を教えてください</p>
+    ＊一回の時間は1時間単位です
+    ＊6時～23時始まりで入力してください
+    <%= form_with(model: @schedule, local: true) do |f| %>
+        <div>
+          <h5>
+            月曜日:
+            <%= f.number_field 'getu_start', in: 6...23 %>時
+            ~
+            <%= f.number_field 'getu_end', in: 7...24 %>時
+          </h5>
+        </div>
+        <div>
+          <h5>
+            火曜日:
+            <%= f.number_field 'ka_start',  in: 6...23 %>時
+            ~
+            <%= f.number_field 'ka_end',  in: 7...24 %>時
+          </h5>
+        </div>
+        <div>
+          <h5>
+            水曜日:
+            <%= f.number_field 'sui_start',  in: 6...23 %>時
+            ~
+            <%= f.number_field 'sui_end',  in: 7...24 %>時
+          </h5>
+        </div>
+        <div>
+          <h5>
+            木曜日:
+            <%= f.number_field 'moku_start',  in: 6...23 %>時
+            ~
+            <%= f.number_field 'moku_end',  in: 7...24 %>時
+          </h5>
+        </div>
+        <div>
+          <h5>
+            金曜日:
+            <%= f.number_field 'kin_start',  in: 6...23 %>時
+            ~
+            <%= f.number_field 'kin_end',  in: 7...24 %>時
+          </h5>
+        </div>
+        <div>
+          <h5>
+            土曜日:
+            <%= f.number_field 'doyou_start',  in: 6...23 %>時
+            ~
+            <%= f.number_field 'doyou_end',  in: 7...24 %>時
+          </h5>
+        </div>
+        <div>
+          <h5>
+            日曜日:
+            <%= f.number_field 'niti_start',  in: 6...23 %>時
+            ~
+            <%= f.number_field 'niti_end',  in: 7...24 %>時
+          </h5>
+        </div>
+      <%# end %>
+      
+        <div>
+          <%= f.submit "日程投稿", class: "btn btn-success" %>
+        </div>
+       
+    <% end %>
+  
+  <%= link_to 'Back', user_path(current_user.id) %>
+
+</article>

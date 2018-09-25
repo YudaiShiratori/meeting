@@ -11,12 +11,8 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require jquery_ujs
 //= require jquery/dist/jquery.js
 //= require bootstrap/dist/js/bootstrap.min
-//= require moment 
-//= require fullcalendar
-//= require fullcalendar/locale-all
 //= require_tree .
 
 
