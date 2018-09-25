@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :mypage, :mypage_edit] 
   before_action :login, only: [:edit, :show, :mypage, :mypage_edit]
   before_action :logout, only: [:new]
+  before_action :authenticate_user, only: [:new, :create, :edit, :show, :destroy, :update]
+
   
   def index
     @interviewers = User.where(admin: true)
@@ -83,4 +85,11 @@ class UsersController < ApplicationController
     end
   end
   
+  def authenticate_user
+    if current_user.id != @user.id
+      redirect_to new_session_path
+      session.delete(:user_id)
+      flash[:danger] = 'エラーがありました'
+    end
+  end
 end

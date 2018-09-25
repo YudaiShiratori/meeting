@@ -1,7 +1,7 @@
 class SchedulesController < ApplicationController
-  before_action :set_schedule, only: [:show, :edit, :update, :destroy]
+  before_action :set_schedule, only: [:show, :edit, :update]
   before_action :login, only: [:new, :edit, :show, :destroy, :update]
-  # before_action :authenticate_schedule, only: [:new, :edit, :destroy, :update]
+  # before_action :authenticate_schedule, only: [:edit, :update]
 
   def index
     @schedules = Schedule.all
@@ -22,23 +22,25 @@ class SchedulesController < ApplicationController
   def create
     @schedule = Schedule.new(schedule_params)
     if @schedule.save(validate: false)
-      a = params["getu_start"].to_i
-      b = params["getu_end"].to_i
-      # c = b.slice!(-1)
-      [a..b].each do |time|
+      start_getu = params["getu_start"].to_i
+      end_getu = params["getu_end"].to_i
+      fin_getu = end_getu - 1
+      [start_getu..fin_getu]. do |time|
         start = time
         fin = time + 1
         @eachschedule = Eachschedule.create(start: start, fin: fin, schedule_id: params[:schedule][:id] )
       end
-      redirect_to user_path(current_user.id)
+      redirect_to mypage_user_path(current_user.id)
+      flash[:notice] = '日程を登録しました'
     else
-      render 'new', notice: "エラー"
+      render 'new', notice: 'エラー'
     end
   end
 
   def update
     if @schedule.update(schedule_params)
       redirect_to user_path(current_user.id)
+      flash[:notice] = '日程を編集しました'
     else
       render 'new'
     end
@@ -72,9 +74,9 @@ class SchedulesController < ApplicationController
     end
   end
     
-    # def authenticate_schedule
-    #   if current_user.id != @schedule.user.id
-    #     redirect_to schedules_path
-    #   end
-    # end
-end
+  # def authenticate_schedule
+  #   if current_user.id != @schedule.user_id
+  #     redirect_to user_path(current_user.id)
+  #     flash[:danger] = 'エラーがありました'
+  #   end
+  # end
