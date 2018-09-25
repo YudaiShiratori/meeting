@@ -1,39 +1,40 @@
-<article class="container col-md-6 col-xs-6">
+<article class="container col-md-4 col-xs-4">
   <% flash.each do |key, value| %>
     <p><%= content_tag(:div, value, class: "#{key}") %></p>
   <% end %>
   <h3><%= @user.name %>さん</h3>
-  <%= form_with(model: @user, local: true) do |f| %>  
-    <h5>
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-    </h5>
-  
-    <h5>
-      <%= f.label :email %>
-      <%= f.text_field :email %>
-    </h5>  
-  
-    <h5>
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-    </h5>
-  
-    <h5>
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation %>
-    </h5>
+  <%= form_with(model: @user, local: true) do |f| %>
+    <div>
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
     
-    <h5 class="field">
-      <%= f.label :image %>
-      <%= f.file_field :image, id: :feed_image %>
-    </h5>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.text_field :email, class: "form-control" %>
+      </div>  
     
-    <h5 class="field">
-      <%= f.label :introduction %>どんな人ですか？
-      <%= f.text_area :introduction, size: "100x10", class: "form-control" %>
-    </h5>
+      <div class="form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, class: "form-control" %>
+      </div>
     
+      <div class="form-group">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, class: "form-control" %>
+      </div>
+    
+      <h5 class="field">
+        <%= f.label :image %>
+        <%= f.file_field :image, id: :feed_image %>
+      </h5>
+      
+      <h5 class="form-group">
+        <%= f.label :introduction %>あなたはどんな人ですか？紹介文をお願いします！
+        <%= f.text_area :introduction, size: "100x10", class: "form-control" %>
+      </h5>
+    </div>
     <br>
     <%= f.submit "マイページを編集する", class: "btn btn-success" %>
     
