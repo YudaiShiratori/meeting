@@ -17,8 +17,8 @@
       <p>
         <tr>
           <td><%= image_tag interviewer.image, class: "icon" %></td>
-          <td><%= interviewer.name %></td>
-          <td><%= link_to '詳細', mypage_user_path(interviewer.id) %></td>
+          <td><h2><%= interviewer.name %></h2></td>
+          <td><h3><%= link_to '詳細', mypage_user_path(interviewer.id) %></h3></td>
         </tr>
       </p>
     <% end %>
@@ -26,5 +26,5 @@
   
   <br>
   
-  <%= link_to 'マイページへ', user_path(current_user.id) %>
+  <%= link_to '戻る', user_path(current_user.id) %>
 </article>

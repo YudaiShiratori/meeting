@@ -25,6 +25,7 @@ class UsersController < ApplicationController
   end
   
   def show
+    @user_schedules = @user.published_schedules
   end
   
   def edit
@@ -40,6 +41,7 @@ class UsersController < ApplicationController
   end
   
   def mypage
+    @user_schedules = @user.published_schedules
   end
   
   # def myschedule

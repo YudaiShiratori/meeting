@@ -1,8 +1,6 @@
 class Schedule < ApplicationRecord
   belongs_to :user
   has_many :myschedules
-  has_many :scheduled_users, through: :myschedule, source: :users
-  has_one :appointment, dependent: :destroy
   has_many :eachschedules
   accepts_nested_attributes_for :eachschedules, allow_destroy: true
   

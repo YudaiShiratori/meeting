@@ -1,15 +1,10 @@
 class SchedulesController < ApplicationController
-  before_action :set_schedule, only: [:show, :edit, :update]
-  before_action :login, only: [:new, :edit, :show, :destroy, :update]
+  before_action :set_schedule, only: [:edit, :update]
+  before_action :login, only: [:new, :edit, :update]
   # before_action :authenticate_schedule, only: [:edit, :update]
 
   def index
     @schedules = Schedule.all
-  end
-  
-  def show
-    @comment = @schedule.comments.build
-    @comments = @schedule.comments
   end
 
   def new
@@ -21,19 +16,20 @@ class SchedulesController < ApplicationController
 
   def create
     @schedule = Schedule.new(schedule_params)
+    @schedule.user_id = current_user.id
     if @schedule.save(validate: false)
       start_getu = params["getu_start"].to_i
       end_getu = params["getu_end"].to_i
       fin_getu = end_getu - 1
-      [start_getu..fin_getu]. do |time|
+      [start_getu..fin_getu].each do |time|
         start = time
         fin = time + 1
-        @eachschedule = Eachschedule.create(start: start, fin: fin, schedule_id: params[:schedule][:id] )
+        @eachschedule = Eachschedule.create(start: start, fin: fin, schedule_id: params[:schedule][:id], user_id: params[:schedule][:user_id] )
       end
       redirect_to mypage_user_path(current_user.id)
       flash[:notice] = '日程を登録しました'
     else
-      render 'new', notice: 'エラー'
+      render 'new', flash[:notice] = 'エラー'
     end
   end
 
@@ -80,3 +76,4 @@ class SchedulesController < ApplicationController
   #     flash[:danger] = 'エラーがありました'
   #   end
   # end
+end

@@ -64,5 +64,3 @@ gem 'mini_magick'
 gem 'bcrypt', '3.1.11'
 
 gem 'font-awesome-rails'
-
-gem "bootstrap_form", ">= 4.0.0.alpha1"
