@@ -2,6 +2,10 @@
   <% flash.each do |key, value| %>
     <p><%= content_tag(:div, value, class: "#{key}") %></p>
   <% end %>
+  
+  <p>面談が可能な日程を教えてください</p>
+  ＊一回の時間は1時間単位です
+  ＊6時～23時始まりで入力してください
   <%= form_with(model: @schedule, local: true) do |f| %>
       <div>
         <h5>

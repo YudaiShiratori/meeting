@@ -3,7 +3,8 @@
   <% @interviewees.each do |interviewee| %>
     <p>
       <tr>
-        <td><%= interviewee.name %></td>
+        <td><%= image_tag interviewee.image, class: "icon" %></td>
+        <td><%= interviewee.name %>さん</td>
         <td><%= link_to '詳細', mypage_user_path(this.user.id) %></td>
       </tr>
     </p>
@@ -14,6 +15,7 @@
   <% @interviewers.each do |interviewer| %>
     <p>
       <tr>
+        <td><%= image_tag interviewer.image, class: "icon" %></td>
         <td><%= interviewer.name %></td>
         <td><%= link_to '詳細', mypage_user_path(interviewer.id) %></td>
       </tr>

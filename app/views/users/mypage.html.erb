@@ -1,69 +1,82 @@
-<h3>面接官：<%= @user.name %>さん</h3>
+<article class="container col-md-7">
+  <div>
+    <%= image_tag @user.image, class:"icon" %>
+    <span>面接官：<%= @user.name %>さん</span>
+  </div>
+  
+  <div class="box", size: "150x100">自己紹介
+    <%= @user.introduction %>
+    <!--make schedule-->
+  </div>
+  
+  <% if @schedule.present? %>
+    <h3>登録日程
+      <% if @schedule.getu_start.present? %>
+        <div>
+          月曜日：
+          <%= @schedule.getu_start %>時～
+          <%= @schedule.getu_end %>時
+        </div>
+      <% end %>
+      <% if @schedule.ka_start.present? %>
+        <div>
+          火曜日：
+          <%= @schedule.ka_start %>時～
+          <%= @schedule.ka_end %>時
+        </div>
+      <% end %>
+      <% if @schedule.sui_start.present? %>
+        <div>
+          水曜日：
+          <%= @schedule.sui_start %>時～
+          <%= @schedule.sui_end %>時
+        </div>
+      <% end %>
+      <% if @schedule.moku_start.present? %>
+        <div>
+          木曜日：
+          <%= @schedule.moku_start %>時～
+          <%= @schedule.moku_end %>時
+        </div>
+      <% end %>
+      <% if @schedule.kin_start.present? %>
+        <div>
+          金曜日：
+          <%= @schedule.kin_start %>時～
+          <%= @schedule.kin_end %>時
+        </div>
+      <% end %>
+      <% if @schedule.doyou_start.present? %>
+        <div>
+          土曜日：
+          <%= @schedule.doyou_start %>時～
+          <%= @schedule.doyou_end %>時
+        </div>
+      <% end %>
+      <% if @schedule.niti_start.present? %>
+        <div>
+          日曜日：
+          <%= @schedule.niti_start %>時～
+          <%= @schedule.niti_end %>時
+        </div>
+      <% end %>
+  <% else %>
+    <p>現在、日程は登録されていません</p>
+  <% end %>
+      
+  <% if logged_in? && (current_user.try(:id)!= @user.id) %>
+    <h5>*このページが応募ユーザーから見えるページです</h5>
+    <%= button_to 'マイページを編集する', edit_user_path(current_user.id), method: :get, class: "btn btn-info" %>
+  <% elsif logged_in? && (current_user.try(:id) != @user.id) %>
+    <% unless @schedule.user_id == current_user.id %>
+      <% if @appointment.present? %>
+         <%= link_to 'お気に入り解除', appointment_path(id: @appointment.id, schedule_id: @schedule.id), method: :delete, 
+         class: 'btn btn-danger', data: {confirm: 'Are you sure?'} %>
+      <% else %>
+         <%= link_to 'お気に入り', appointment_path(schedule_id: @schedule.id), method: :post, class: 'btn btn-primary',
+         data: {confirm: 'Are you sure?'}%>
+      <% end %>
+    <% end %>
+  <% end %>
 
-<div class="icon">
-  <%= image_tag @user.image %>
-</div>
-
-<h3><%= @user.name %></h3>
-<div class="box", size: "150x100">自己紹介
-  <%= @user.introduction %>
-  <!--make schedule-->
-</div>
-
-<% if @schedule.present? %>
-  <h3>自分の登録日程
-    <% if @schedule.getu_start.present? %>
-      <div>
-        月曜日：
-        <%= @schedule.getu_start %>時～
-        <%= @schedule.getu_end %>時
-      </div>
-    <% end %>
-    <% if @schedule.ka_start.present? %>
-      <div>
-        火曜日：
-        <%= @schedule.ka_start %>時～
-        <%= @schedule.ka_end %>時
-      </div>
-    <% end %>
-    <% if @schedule.sui_start.present? %>
-      <div>
-        水曜日：
-        <%= @schedule.sui_start %>時～
-        <%= @schedule.sui_end %>時
-      </div>
-    <% end %>
-    <% if @schedule.moku_start.present? %>
-      <div>
-        木曜日：
-        <%= @schedule.moku_start %>時～
-        <%= @schedule.moku_end %>時
-      </div>
-    <% end %>
-    <% if @schedule.kin_start.present? %>
-      <div>
-        金曜日：
-        <%= @schedule.kin_start %>時～
-        <%= @schedule.kin_end %>時
-      </div>
-    <% end %>
-    <% if @schedule.doyou_start.present? %>
-      <div>
-        土曜日：
-        <%= @schedule.doyou_start %>時～
-        <%= @schedule.doyou_end %>時
-      </div>
-    <% end %>
-    <% if @schedule.niti_start.present? %>
-      <div>
-        日曜日：
-        <%= @schedule.niti_start %>時～
-        <%= @schedule.niti_end %>時
-      </div>
-    <% end %>
-<% end %>
-    
-<% if logged_in? && current_user.try(:user_id) == current_user.id %>
-  <h5>*このページが応募ユーザーから見えるページです</h5>
-  <%= button_to 'マイページを編集する', edit_user_path(current_user.id), method: :get, class: "btn btn-info" %>
-<% end %>
+</article>

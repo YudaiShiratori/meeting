@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20180923112453) do
 
   create_table "eachschedules", force: :cascade do |t|
     t.integer "start"
+    t.integer "fin"
     t.bigint "user_id"
     t.bigint "schedule_id"
     t.datetime "created_at", null: false
