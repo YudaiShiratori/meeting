@@ -9,58 +9,57 @@
   
   <div class="box", size: "150x100">自己紹介
     <%= @user.introduction %>
-    <!--make schedule-->
   </div>
   
-  <% if @user.schedules.present? %>
+  <% if @user.myschedule_schedules.present? %>
     <h3>登録日程
-      <% if @user.schedule.getu_start.present? %>
+      <% if @user.myschedule_schedule.getu_start.present? %>
         <div>
           月曜日：
-          <%= @user.schedule.getu_start %>時～
-          <%= @user.schedule.getu_end %>時
+          <%= @user.myschedule_schedule.getu_start %>時～
+          <%= @user.myschedule_schedule.getu_end %>時
         </div>
       <% end %>
-      <% if @user.schedule.ka_start.present? %>
+      <% if @user.myschedule_schedule.ka_start.present? %>
         <div>
           火曜日：
-          <%= @user.schedule.ka_start %>時～
-          <%= @user.schedule.ka_end %>時
+          <%= @user.myschedule_schedule.ka_start %>時～
+          <%= @user.myschedule_schedule.ka_end %>時
         </div>
       <% end %>
-      <% if @user.schedule.sui_start.present? %>
+      <% if @user.myschedule_schedule.sui_start.present? %>
         <div>
           水曜日：
-          <%= @user.schedule.sui_start %>時～
-          <%= @user.schedule.sui_end %>時
+          <%= @user.myschedule_schedule.sui_start %>時～
+          <%= @user.myschedule_schedule.sui_end %>時
         </div>
       <% end %>
-      <% if @user.schedule.moku_start.present? %>
+      <% if @user.myschedule_schedule.moku_start.present? %>
         <div>
           木曜日：
-          <%= @user.schedule.moku_start %>時～
-          <%= @user.schedule.moku_end %>時
+          <%= @user.myschedule_schedule.moku_start %>時～
+          <%= @user.myschedule_schedule.moku_end %>時
         </div>
       <% end %>
-      <% if @user.schedule.kin_start.present? %>
+      <% if @user.myschedule_schedule.kin_start.present? %>
         <div>
           金曜日：
-          <%= @user.schedule.kin_start %>時～
-          <%= @user.schedule.kin_end %>時
+          <%= @user.myschedule_schedule.kin_start %>時～
+          <%= @user.myschedule_schedule.kin_end %>時
         </div>
       <% end %>
-      <% if @user.schedule.doyou_start.present? %>
+      <% if @user.myschedule_schedule.doyou_start.present? %>
         <div>
           土曜日：
-          <%= @user.schedule.doyou_start %>時～
-          <%= @user.schedule.doyou_end %>時
+          <%= @user.myschedule_schedule.doyou_start %>時～
+          <%= @user.myschedule_schedule.doyou_end %>時
         </div>
       <% end %>
-      <% if @user.schedule.niti_start.present? %>
+      <% if @user.myschedule_schedule.niti_start.present? %>
         <div>
           日曜日：
-          <%= @user.schedule.niti_start %>時～
-          <%= @user.schedule.niti_end %>時
+          <%= @user.myschedule_schedule.niti_start %>時～
+          <%= @user.myschedule_schedule.niti_end %>時
         </div>
       <% end %>
   <% else %>

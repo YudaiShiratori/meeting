@@ -6,12 +6,15 @@ class User < ApplicationRecord
    validates :password, presence: true, length: { minimum: 3 }
    has_secure_password
    
+   mount_uploader :image, ImageUploader
+   
+  # 面接官
    has_many :schedules, dependent: :destroy
    has_many :myschedules, dependent: :destroy
    has_many :myschedule_schedules, through: :myschedules, source: :schedule
    
-   has_many :match_users, through: :schedule, source: :user
-   
-   mount_uploader :image, ImageUploader
+  # 面接者
+   has_many :appointment, dependent: :destroy
+   has_many :match_schedule, through: :appointment, source: :schedule
    
 end
