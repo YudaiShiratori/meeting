@@ -71,12 +71,16 @@
             <% if t.weekday == "monday" %>
               <td>
                 月：<%= t.start %>時～<%= t.fin %>時
-                  <%# unless @eachschedule.user_id == current_user.id %>
-                    <%# if @appointment.nil? %>
-                       <%#= link_to '予約する', appointment_path(eachschedule_id: @eachschedule.id),
+                  <% unless t.user_id == current_user.id %>
+                    <% if @appointment.nil? %>
+                       <%= button_to '予約する',
+                         appointments_path(
+                           interviewee_id: current_user.id,
+                           eachschedule_id: t.id
+                           ),
                          method: :post, class: 'btn btn-primary' %>
-                    <%# end %>
-                  <%# end %>
+                    <% end %>
+                  <% end %>
               </td>
             <% end %>
             <% if t.weekday == "tuesday" %>

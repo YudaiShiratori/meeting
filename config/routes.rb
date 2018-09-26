@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   
   resources :schedules
   
-  resources :appointment, only: [:create, :destroy]
+  resources :appointments, only: [:create, :destroy]
   
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: '/inbox'

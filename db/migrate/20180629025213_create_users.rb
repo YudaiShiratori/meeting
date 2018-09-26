@@ -9,6 +9,8 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.text :image
       t.text :introduction
       
+      t.string :skypeID
+      
     end
   end
 end
