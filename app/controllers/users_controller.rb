@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   
   def mypage
     @user_schedule = @user.schedule
-    # @user_eachschedule = @user.my_eachschedule
+    @user_eachschedules = @user.schedule.eachschedules
   end
   
   # def myschedule
@@ -69,8 +69,8 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(
       :name, :email, :password, :password_confirmation, :admin,
-      :introduction, :image, :image_cache
-      # schedule_items_attributes: [:start, :end, :schedule_id, :user_id]
+      :introduction, :image, :image_cache,
+      schedule_items_attributes: [:start, :fin, :weekday, :schedule_id, :user_id]
     )
   end
   

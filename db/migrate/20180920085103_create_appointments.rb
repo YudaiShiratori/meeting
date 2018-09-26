@@ -1,9 +1,9 @@
 class CreateAppointments < ActiveRecord::Migration[5.1]
   def change
     create_table :appointments do |t|
-      t.boolean :presence, default: false
-      t.references :schedule
+      t.references :eachschedule
       t.integer :interviewee_id
+      t.references :user
       t.text    :message
 
       t.timestamps

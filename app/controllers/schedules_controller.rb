@@ -54,7 +54,7 @@ class SchedulesController < ApplicationController
           each_schedule = Eachschedule.create(start: time, fin: time + 1, weekday: 'sunday', schedule_id: @schedule.id, user_id: @schedule.user_id)
         end
       end
-      redirect_to mypage_user_path(current_user.id)
+      redirect_to user_path(current_user.id)
       flash[:notice] = '日程を登録しました'
     else
       render 'new'
@@ -184,7 +184,7 @@ class SchedulesController < ApplicationController
           delete_each_schedule.delete_all
         end
       end
-      redirect_to mypage_user_path(current_user.id)
+      redirect_to user_path(current_user.id)
       flash[:notice] = '日程を更新しました'
     else
       render 'new'
