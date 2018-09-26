@@ -2,6 +2,13 @@
 ja:
   activerecord:
     errors:
+      
+      models:
+        eachschedule:
+          attributes:
+            schedule:
+              required:
+    
       messages:
         record_invalid: "バリデーションに失敗しました: %{errors}"
         restrict_dependent_destroy:

@@ -3,6 +3,7 @@ class CreateEachschedules < ActiveRecord::Migration[5.1]
     create_table :eachschedules do |t|
       t.integer :start
       t.integer :fin
+      t.string :weekday
       t.references :user
       t.references :schedule
 

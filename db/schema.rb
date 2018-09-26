@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180925152610) do
+ActiveRecord::Schema.define(version: 20180923112453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20180925152610) do
   create_table "eachschedules", force: :cascade do |t|
     t.integer "start"
     t.integer "fin"
+    t.string "weekday"
     t.bigint "user_id"
     t.bigint "schedule_id"
     t.datetime "created_at", null: false
@@ -36,21 +37,7 @@ ActiveRecord::Schema.define(version: 20180925152610) do
     t.index ["user_id"], name: "index_eachschedules_on_user_id"
   end
 
-  create_table "myschdules", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "schedule_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "myschedules", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "schedules", force: :cascade do |t|
-    t.datetime "start"
-    t.datetime "end"
     t.bigint "user_id"
     t.text "message"
     t.integer "getu_start"

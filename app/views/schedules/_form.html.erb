@@ -2,6 +2,17 @@
     <% flash.each do |key, value| %>
       <p><%= content_tag(:div, value, class: "#{key}") %></p>
     <% end %>
+    <% if @schedule.errors.any? %>
+      <!--<div id="error_explanation">-->
+        <h2><%= @schedule.errors.count %>件のエラーがあります。</h2>
+        <ul>
+  
+        <% @schedule.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      <!--</div>-->
+    <% end %>
     
     <p>面談が可能な日程を教えてください</p>
     ＊一回の時間は1時間単位です

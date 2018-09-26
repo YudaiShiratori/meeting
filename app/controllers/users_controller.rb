@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :mypage, :mypage_edit] 
   before_action :login, only: [:edit, :show, :mypage, :mypage_edit]
   before_action :logout, only: [:new]
-  before_action :authenticate_user, only: [:new, :create, :edit, :show, :destroy, :update]
+  before_action :authenticate_user, only: [:edit, :show, :destroy, :update]
 
   
   def index
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user_schedules = @user.published_schedules
+    @user_schedule = @user.schedule
   end
   
   def edit
@@ -41,7 +41,8 @@ class UsersController < ApplicationController
   end
   
   def mypage
-    @user_schedules = @user.published_schedules
+    @user_schedule = @user.schedule
+    # @user_eachschedule = @user.my_eachschedule
   end
   
   # def myschedule

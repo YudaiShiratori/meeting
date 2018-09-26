@@ -9,12 +9,13 @@ class User < ApplicationRecord
   mount_uploader :image, ImageUploader
   
   # 面接官
-   has_many :schedules, dependent: :destroy
-   has_many :myschedules, dependent: :destroy
-   has_many :published_schedules, through: :myschedule, source: :schedule
+   has_one :schedule, dependent: :destroy
+   has_many :my_eachschedule, through: :schedule, source: :eachschedule
+   # has_many :myschedules, dependent: :destroy
+   # has_many :published_schedules, through: :myschedule, source: :schedule
 
   # 面接者
-   has_many :appointment, dependent: :destroy
-   has_many :match_schedule, through: :appointment, source: :schedule
+   has_many :appointments, dependent: :destroy
+   has_many :match_eachschedules, through: :appointment, source: :eachschedule
    
 end
