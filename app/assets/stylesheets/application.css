@@ -11,7 +11,6 @@
  * It is generally better to create a new file per style scope.
  *
  *= require bootstrap/dist/css/bootstrap.min
- *= require fullcalendar
  *= require font-awesome
  *= require_tree .
  *= require_self
@@ -34,8 +33,12 @@ body.usiro{
     background: url(../img/bg-pattern.png),linear-gradient(to left,#7b4397,#dc2430);
 }
 
+.container-fluid{
+    padding: 0;
+}
 
-/*#calendar {*/
-/*	max-width: 820px;*/
-/*	margin: 0 auto;*/
-/*}*/
+.icon{
+  border-radius: 80px;
+  height: 160px;
+  width: 160px;
+}

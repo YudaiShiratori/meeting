@@ -1,26 +1,30 @@
-<% if current_user.try(:admin?) %>
-  <h2>面接者一覧</h2>
-  <% @interviewees.each do |interviewee| %>
-    <p>
-      <tr>
-        <td><%= interviewee.name %></td>
-        <td><%= link_to '詳細', mypage_user_path(this.user.id) %></td>
-      </tr>
-    </p>
+<article class="container col-md-10 col-xs-4">
+  <% if current_user.try(:admin?) %>
+    <h2>面接者一覧</h2>
+    <% @interviewees.each do |interviewee| %>
+      <p>
+        <tr>
+          <td><%= image_tag interviewee.image, class: "icon" %></td>
+          <td><%= interviewee.name %>さん</td>
+          <td><%= link_to '詳細', mypage_user_path(this.user.id) %></td>
+        </tr>
+      </p>
+    <% end %>
+    
+  <% else %>
+    <h2>面接官一覧</h2>
+    <% @interviewers.each do |interviewer| %>
+      <p>
+        <tr>
+          <td><%= image_tag interviewer.image, class: "icon" %></td>
+          <td><h2><%= interviewer.name %></h2></td>
+          <td><h3><%= link_to '詳細', mypage_user_path(interviewer.id) %></h3></td>
+        </tr>
+      </p>
+    <% end %>
   <% end %>
   
-<% else %>
-  <h2>面接官一覧</h2>
-  <% @interviewers.each do |interviewer| %>
-    <p>
-      <tr>
-        <td><%= interviewer.name %></td>
-        <td><%= link_to '詳細', mypage_user_path(interviewer.id) %></td>
-      </tr>
-    </p>
-  <% end %>
-<% end %>
-
-<br>
-
-<%= link_to 'Back', user_path(current_user.id) %>
+  <br>
+  
+  <%= link_to '戻る', user_path(current_user.id) %>
+</article>

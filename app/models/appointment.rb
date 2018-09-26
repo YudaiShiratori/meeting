@@ -1,4 +1,4 @@
 class Appointment < ApplicationRecord
-  belongs_to :schedule
-  has_one :user
+  belongs_to :eachschedule
+  belongs_to :user
 end

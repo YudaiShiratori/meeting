@@ -47,8 +47,11 @@
     <% if controller.controller_name != "tops" %>  
       <header>
         <% if logged_in? %>
-          <% if controller.action_name != "show" %>
-            <%= link_to "投稿 OR 探す", user_path(current_user.id), class:"btn btn-outline btn-xl js-scroll-trigger" %>
+          <% if (controller.action_name != "show") && (controller.action_name != "index") && (controller.action_name != "new")%>
+            <%= link_to "空き日程投稿", user_path(current_user.id), 
+            class:"btn btn-outline btn-xl js-scroll-trigger" if current_user.admin == true %>
+            <%= link_to "面接官を探す", user_path(current_user.id), 
+            class:"btn btn-outline btn-xl js-scroll-trigger" if current_user.admin == false %>
           <% end %>
           <% if (controller.action_name != "mypage") && (controller.action_name != "edit") %>
             <%= link_to "マイページ", mypage_user_path(current_user.id), class:"btn btn-outline btn-xl js-scroll-trigger" %>

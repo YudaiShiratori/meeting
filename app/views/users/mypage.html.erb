@@ -1,16 +1,81 @@
-<h3>面接官：<%= @user.name %>さん</h3>
+<article class="container col-md-7">
+  <% if logged_in? && (current_user.id == @user.id) %>
+    <p>マイページ＊この文字は他のユーザーには表示されません</p>
+  <% end %>
+  <div>
+    <%= image_tag @user.image, class:"icon" %>
+    <span>面接官：<%= @user.name %>さん</span>
+  </div>
+  
+  <div class="box", size: "150x100">自己紹介
+    <%= @user.introduction %>
+    <!--make schedule-->
+  </div>
+  
+  <% if @user_schedule.present? %>
+    <h3>登録日程
+      <% if @user_schedule.getu_start.present? %>
+        <div>
+          月曜日：
+          <%= @user_schedule.getu_start %>時～
+          <%= @user_schedule.getu_end %>時
+        </div>
+      <% end %>
+      <% if @user_schedule.ka_start.present? %>
+        <div>
+          火曜日：
+          <%= @user_schedule.ka_start %>時～
+          <%= @user_schedule.ka_end %>時
+        </div>
+      <% end %>
+      <% if @user_schedule.sui_start.present? %>
+        <div>
+          水曜日：
+          <%= @user_schedule.sui_start %>時～
+          <%= @user_schedule.sui_end %>時
+        </div>
+      <% end %>
+      <% if @user_schedule.moku_start.present? %>
+        <div>
+          木曜日：
+          <%= @user_schedule.moku_start %>時～
+          <%= @user_schedule.moku_end %>時
+        </div>
+      <% end %>
+      <% if @user_schedule.kin_start.present? %>
+        <div>
+          金曜日：
+          <%= @user_schedule.kin_start %>時～
+          <%= @user_schedule.kin_end %>時
+        </div>
+      <% end %>
+      <% if @user_schedule.doyou_start.present? %>
+        <div>
+          土曜日：
+          <%= @user_schedule.doyou_start %>時～
+          <%= @user_schedule.doyou_end %>時
+        </div>
+      <% end %>
+      <% if @user_schedule.niti_start.present? %>
+        <div>
+          日曜日：
+          <%= @user_schedule.niti_start %>時～
+          <%= @user_schedule.niti_end %>時
+        </div>
+      <% end %>
+      
+      <% if @user_eachschedules.present? %>
+        <%= @user_eachschedule.start %>
+      <% end %>
+  <% else %>
+    <p>現在、日程は登録されていません</p>
+  <% end %>
+      
+  <% if logged_in? && (current_user.id == @user.id) %>
+    <h5>*このページが応募ユーザーから見えるページです</h5>
+    <%= button_to 'マイページを編集する', edit_user_path(current_user.id), method: :get, class: "btn btn-info" %>
+  <% elsif logged_in? && (current_user.id != @user.id) %>
+    <%= link_to '戻る', users_path %>
+  <% end %>
 
-<div class="icon">
-  <%= image_tag @user.image %>
-</div>
-
-<h3><%= @user.name %></h3>
-<div class="box", size: "150x100">自己紹介
-  <%= @user.introduction %>
-  <!--make schedule-->
-</div>
-
-<%# if logged_in? && current_user.try(:user_id) == current_user.id %>
-  <h5>*このページが応募ユーザーから見えるページです</h5>
-  <%= button_to 'マイページを編集する', edit_user_path(current_user.id), method: :get, class: "btn btn-info" %>
-<%# end %>
+</article>

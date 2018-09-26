@@ -1,66 +1,87 @@
-<p>
-  <%= form_with(model: @schedule, local: true) do |f| %>  
-      <div>
-        <h5>
-          <%= f.label :monday %>月曜日:
-          <input type="number" name="start" min="06" max="23">時
-          ~
-          <input type="number" name="end" min="07" max="24">時
-        </h5>
-      </div>
-      <div>
-        <h5>
-          <%= f.label :tuesday %>火曜日:
-          <input type="number" name="start" min="06" max="23">時
-          ~
-          <input type="number" name="end" min="07" max="24">時
-        </h5>
-      </div>
-      <div>
-        <h5>
-          <%= f.label :wednesday %>水曜日:
-          <input type="number" name="start" min="06" max="23">時
-          ~
-          <input type="number" name="end" min="07" max="24">時
-        </h5>
-      </div>
-      <div>
-        <h5>
-          <%= f.label :thursday %>木曜日:
-          <input type="number" name="start" min="06" max="23">時
-          ~
-          <input type="number" name="end" min="07" max="24">時
-        </h5>
-      </div>
-      <div>
-        <h5>
-          <%= f.label :friday %>金曜日:
-          <input type="number" name="start" min="06" max="23">時
-          ~
-          <input type="number" name="end" min="07" max="24">時
-        </h5>
-      </div>
-      <div>
-        <h5>
-          <%= f.label :saturday %>土曜日:
-          <input type="number" name="start" min="06" max="23">時
-          ~
-          <input type="number" name="end" min="07" max="24">時
-        </h5>
-      </div>
-      <div>
-        <h5>
-          <%= f.label :sunday %>日曜日:
-          <input type="number" name="start" min="06" max="23">時
-          ~
-          <input type="number" name="end" min="07" max="24">時
-        </h5>
-      </div>
-       
-      <div>
-        <%= f.submit "日程投稿", class: "btn btn-success" %>
-      </div>
+<article class="container col-md-4 col-xs-4">
+    <% flash.each do |key, value| %>
+      <p><%= content_tag(:div, value, class: "#{key}") %></p>
+    <% end %>
+    <% if @schedule.errors.any? %>
+      <!--<div id="error_explanation">-->
+        <h2><%= @schedule.errors.count %>件のエラーがあります。</h2>
+        <ul>
+  
+        <% @schedule.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      <!--</div>-->
+    <% end %>
+    
+    <p>面談が可能な日程を教えてください</p>
+    ＊一回の時間は1時間単位です
+    ＊6時～23時始まりで入力してください
+    <%= form_with(model: @schedule, local: true) do |f| %>
+        <div>
+          <h5>
+            月曜日:
+            <%= f.number_field 'getu_start', in: 6...23 %>時
+            ~
+            <%= f.number_field 'getu_end', in: 7...24 %>時
+          </h5>
+        </div>
+        <div>
+          <h5>
+            火曜日:
+            <%= f.number_field 'ka_start',  in: 6...23 %>時
+            ~
+            <%= f.number_field 'ka_end',  in: 7...24 %>時
+          </h5>
+        </div>
+        <div>
+          <h5>
+            水曜日:
+            <%= f.number_field 'sui_start',  in: 6...23 %>時
+            ~
+            <%= f.number_field 'sui_end',  in: 7...24 %>時
+          </h5>
+        </div>
+        <div>
+          <h5>
+            木曜日:
+            <%= f.number_field 'moku_start',  in: 6...23 %>時
+            ~
+            <%= f.number_field 'moku_end',  in: 7...24 %>時
+          </h5>
+        </div>
+        <div>
+          <h5>
+            金曜日:
+            <%= f.number_field 'kin_start',  in: 6...23 %>時
+            ~
+            <%= f.number_field 'kin_end',  in: 7...24 %>時
+          </h5>
+        </div>
+        <div>
+          <h5>
+            土曜日:
+            <%= f.number_field 'doyou_start',  in: 6...23 %>時
+            ~
+            <%= f.number_field 'doyou_end',  in: 7...24 %>時
+          </h5>
+        </div>
+        <div>
+          <h5>
+            日曜日:
+            <%= f.number_field 'niti_start',  in: 6...23 %>時
+            ~
+            <%= f.number_field 'niti_end',  in: 7...24 %>時
+          </h5>
+        </div>
+      <%# end %>
       
-  <% end %>
-</p>
-<%= link_to 'Back', user_path(current_user.id) %>
+        <div>
+          <%= f.submit "日程投稿", class: "btn btn-success" %>
+        </div>
+       
+    <% end %>
+  
+  <%= link_to '戻る', user_path(current_user.id) %>
+
+</article>
