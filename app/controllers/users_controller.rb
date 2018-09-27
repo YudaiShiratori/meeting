@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   before_action :logout, only: [:new]
   before_action :authenticate_user, only: [:edit, :show, :destroy, :update]
 
-  
   def index
     @interviewers = User.where(admin: true)
     @interviewees = User.where(admin: false)
@@ -42,7 +41,7 @@ class UsersController < ApplicationController
   
   def mypage
     @user_schedule = @user.schedule
-    # @user_eachschedule = @user.my_eachschedule
+    @user_eachschedules = @user.my_eachschedules
   end
   
   # def myschedule

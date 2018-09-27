@@ -10,7 +10,7 @@ class User < ApplicationRecord
   
   # 面接官
    has_one :schedule, dependent: :destroy
-   has_many :my_eachschedule, through: :schedule, source: :eachschedule
+   has_many :my_eachschedules, through: :schedule, source: :eachschedule
    # has_many :myschedules, dependent: :destroy
    # has_many :published_schedules, through: :myschedule, source: :schedule
 

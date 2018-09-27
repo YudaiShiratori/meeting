@@ -16,13 +16,14 @@ ActiveRecord::Schema.define(version: 20180923112453) do
   enable_extension "plpgsql"
 
   create_table "appointments", force: :cascade do |t|
-    t.boolean "presence", default: false
     t.bigint "schedule_id"
+    t.bigint "user_id"
     t.integer "interviewee_id"
     t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["schedule_id"], name: "index_appointments_on_schedule_id"
+    t.index ["user_id"], name: "index_appointments_on_user_id"
   end
 
   create_table "eachschedules", force: :cascade do |t|
@@ -39,7 +40,6 @@ ActiveRecord::Schema.define(version: 20180923112453) do
 
   create_table "schedules", force: :cascade do |t|
     t.bigint "user_id"
-    t.text "message"
     t.integer "getu_start"
     t.integer "getu_end"
     t.integer "ka_start"

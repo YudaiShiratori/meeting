@@ -2,7 +2,6 @@ class CreateSchedules < ActiveRecord::Migration[5.1]
   def change
     create_table :schedules do |t|
       t.references :user
-      t.text :message
       
       t.integer :getu_start
       t.integer :getu_end
