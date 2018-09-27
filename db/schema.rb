@@ -16,13 +16,22 @@ ActiveRecord::Schema.define(version: 20180923112453) do
   enable_extension "plpgsql"
 
   create_table "appointments", force: :cascade do |t|
+<<<<<<< HEAD
     t.bigint "schedule_id"
     t.bigint "user_id"
+=======
+    t.bigint "eachschedule_id"
+>>>>>>> fb14993e971b34332b35fb07886e84f75eb56d82
     t.integer "interviewee_id"
+    t.bigint "user_id"
     t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+<<<<<<< HEAD
     t.index ["schedule_id"], name: "index_appointments_on_schedule_id"
+=======
+    t.index ["eachschedule_id"], name: "index_appointments_on_eachschedule_id"
+>>>>>>> fb14993e971b34332b35fb07886e84f75eb56d82
     t.index ["user_id"], name: "index_appointments_on_user_id"
   end
 
@@ -67,6 +76,7 @@ ActiveRecord::Schema.define(version: 20180923112453) do
     t.datetime "updated_at", null: false
     t.text "image"
     t.text "introduction"
+    t.string "skypeID"
     t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end

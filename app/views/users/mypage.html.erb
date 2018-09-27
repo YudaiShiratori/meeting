@@ -64,9 +64,47 @@
         </div>
       <% end %>
       
-      <% if @user_eachschedules.present? %>
-        <%= @user_eachschedule.start %>
-      <% end %>
+    <h2>先一週間の予定</h2>
+    <% @user_eachschedules.each do |t| %>
+        <h3>
+          <tr>
+            <% if t.weekday == "monday" %>
+              <td>
+                月：<%= t.start %>時～<%= t.fin %>時
+                  <% unless t.user_id == current_user.id %>
+                    <% if @appointment.nil? %>
+                       <%= button_to '予約する',
+                         appointments_path(
+                           interviewee_id: current_user.id,
+                           eachschedule_id: t.id
+                           ),
+                         method: :post, class: 'btn btn-primary' %>
+                    <% end %>
+                  <% end %>
+              </td>
+            <% end %>
+            <% if t.weekday == "tuesday" %>
+              <td>火：<%= t.start %>時～<%= t.fin %>時</td>
+            <% end %>
+            <% if t.weekday == "wednesday" %>
+              <td>水：<%= t.start %>時～<%= t.fin %>時</td>
+            <% end %>
+            <% if t.weekday == "thursday" %>
+              <td>木：<%= t.start %>時～<%= t.fin %>時</td>
+            <% end %>
+            <% if t.weekday == "friday" %>
+              <td>金：<%= t.start %>時～<%= t.fin %>時</td>
+            <% end %>
+            <% if t.weekday == "saturday" %>
+              <td>土：<%= t.start %>時～<%= t.fin %>時</td>
+            <% end %>
+            <% if t.weekday == "sunday" %>
+              <td>日：<%= t.start %>時～<%= t.fin %>時</td>
+            <% end %>
+          </tr>
+        </h3>
+    <% end %>
+      
   <% else %>
     <p>現在、日程は登録されていません</p>
   <% end %>

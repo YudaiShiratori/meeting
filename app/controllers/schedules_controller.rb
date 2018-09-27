@@ -208,7 +208,7 @@ class SchedulesController < ApplicationController
       :kin_start, :kin_end, 
       :doyou_start, :doyou_end,
       :niti_start, :niti_end,
-    eachschedule_items_attributes: [:start, :fin, :weekday, :schedule_id, :user_id]
+    # eachschedule_items_attributes: [:start, :fin, :weekday, :schedule_id, :user_id]
     )
   end
   
