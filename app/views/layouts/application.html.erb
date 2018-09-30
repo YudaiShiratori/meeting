@@ -48,7 +48,7 @@
       <header>
         <% if logged_in? %>
           <% if (controller.action_name != "show") && (controller.action_name != "index") && (controller.action_name != "new")%>
-            <%= link_to "空き日程投稿", user_path(current_user.id), 
+            <%= link_to "空き日程編集", user_path(current_user.id), 
             class:"btn btn-outline btn-xl js-scroll-trigger" if current_user.admin == true %>
             <%= link_to "面接官を探す", user_path(current_user.id), 
             class:"btn btn-outline btn-xl js-scroll-trigger" if current_user.admin == false %>

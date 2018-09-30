@@ -1,7 +1,7 @@
 class AppointmentDoneMailer < ApplicationMailer
-  def done_appointment_mail(appointment)
+  def appointment_done_mail(appointment)
     @appointment = appointment
-    
-    mail to: @appointment.eachschedule.user, subject: "[要確認]面談の予約が入りました"
+    @interviewer = User.find_by(@appintment.user_id)
+    mail to: @interviewer.email, subject: "[要確認]面談の予約が入りました"
   end
 end

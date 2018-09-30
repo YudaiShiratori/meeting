@@ -3,11 +3,11 @@ class AppointmentsController < ApplicationController
   def create
     appointment = current_user.appointments.create(
       eachschedule_id: params[:eachschedule_id],
-      interviewee_id: params[:interviewee_id],
-      user_id: params[:user_id]
+      interviewee_id: current_user.id,
+      user_id: params[:user_id] #interviwer_id
       )
-    AppointmentDoMailer.do_appointment_mail(current_user).deliver
-    AppointmentDoneMailer.done_appointment_mail(@appointment).deliver
+    AppointmentDoMailer.appointment_do_mail(current_user).deliver
+    # AppointmentDoneMailer.appointment_done_mail(@appointment).deliver
     redirect_to mypage_user_path(appointment.user_id), notice: "#{appointment.eachschedule.schedule.user.name}との面接練習を予約しました"
   end
   

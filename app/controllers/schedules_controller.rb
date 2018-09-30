@@ -14,7 +14,7 @@ class SchedulesController < ApplicationController
   def create
     @schedule = Schedule.new(schedule_params)
     @schedule.user_id = current_user.id
-    if @schedule.save(schedule_params)
+    if @schedule.save(validate: false)
       if @schedule.getu_start && @schedule.getu_end
         @schedule.getu_start.upto(@schedule.getu_end) do |time|
           each_schedule =
@@ -193,20 +193,20 @@ class SchedulesController < ApplicationController
 
   private
   def set_schedule
-    @schedule = Schedule.find(params[:id])
+    @schedule = Schedule.find_by(params[:user_id])
   end
 
   def schedule_params
     params.require(:schedule).permit(
       :user_id, 
-      :schedule_id,
+      # :schedule_id,
       :getu_start, :getu_end, 
       :ka_start, :ka_end,
       :sui_start, :sui_end,
       :moku_start, :moku_end,
       :kin_start, :kin_end, 
       :doyou_start, :doyou_end,
-      :niti_start, :niti_end,
+      :niti_start, :niti_end
     # eachschedule_items_attributes: [:start, :fin, :weekday, :schedule_id, :user_id]
     )
   end
