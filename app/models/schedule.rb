@@ -2,7 +2,6 @@ class Schedule < ApplicationRecord
   belongs_to :user
   # has_many :myschedules
   has_many :eachschedules
-  belongs_to :eachschedule
   accepts_nested_attributes_for :eachschedules, allow_destroy: true
   
   validates :getu_start, :numericality => { :greater_than => 6, :less_than => 23, allow_blank: true}

@@ -16,22 +16,13 @@ ActiveRecord::Schema.define(version: 20180923112453) do
   enable_extension "plpgsql"
 
   create_table "appointments", force: :cascade do |t|
-<<<<<<< HEAD
-    t.bigint "schedule_id"
-    t.bigint "user_id"
-=======
     t.bigint "eachschedule_id"
->>>>>>> fb14993e971b34332b35fb07886e84f75eb56d82
     t.integer "interviewee_id"
     t.bigint "user_id"
     t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-<<<<<<< HEAD
-    t.index ["schedule_id"], name: "index_appointments_on_schedule_id"
-=======
     t.index ["eachschedule_id"], name: "index_appointments_on_eachschedule_id"
->>>>>>> fb14993e971b34332b35fb07886e84f75eb56d82
     t.index ["user_id"], name: "index_appointments_on_user_id"
   end
 
@@ -49,6 +40,7 @@ ActiveRecord::Schema.define(version: 20180923112453) do
 
   create_table "schedules", force: :cascade do |t|
     t.bigint "user_id"
+    t.integer "eachschedule_id"
     t.integer "getu_start"
     t.integer "getu_end"
     t.integer "ka_start"

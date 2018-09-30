@@ -2,6 +2,7 @@ class CreateSchedules < ActiveRecord::Migration[5.1]
   def change
     create_table :schedules do |t|
       t.references :user
+      t.integer :eachschedule_id
       
       t.integer :getu_start
       t.integer :getu_end

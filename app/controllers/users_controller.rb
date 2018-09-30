@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   
   def mypage
     @user_schedule = @user.schedule
-    @user_eachschedules = @user.schedule_eachschedules
+    @user_eachschedules = @user.eachschedules
   end
   
   # def myschedule
