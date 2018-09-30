@@ -6,8 +6,8 @@ class AppointmentsController < ApplicationController
       interviewee_id: params[:interviewee_id],
       user_id: params[:user_id]
       )
-    MakeappointmentMailer.do_appointment_mail(current_user).deliver
-    MakeappointmentMailer.done_appointment_mail(@appointment).deliver
+    AppointmentDoMailer.do_appointment_mail(current_user).deliver
+    AppointmentDoneMailer.done_appointment_mail(@appointment).deliver
     redirect_to mypage_user_path(appointment.user_id), notice: "#{appointment.eachschedule.schedule.user.name}との面接練習を予約しました"
   end
   

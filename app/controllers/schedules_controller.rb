@@ -14,8 +14,8 @@ class SchedulesController < ApplicationController
   def create
     @schedule = Schedule.new(schedule_params)
     @schedule.user_id = current_user.id
-    if @schedule.save(validate: false)
-      if (@schedule.getu_start) && (@schedule.getu_end)
+    if @schedule.save(schedule_params)
+      if @schedule.getu_start && @schedule.getu_end
         @schedule.getu_start.upto(@schedule.getu_end) do |time|
           each_schedule =
             Eachschedule.create(start: time, fin: time + 1,
@@ -24,32 +24,32 @@ class SchedulesController < ApplicationController
               user_id: @schedule.user_id)
         end
       end
-      if (@schedule.ka_start.present?) && (@schedule.ka_end.present?)
+      if @schedule.ka_start && @schedule.ka_end
         @schedule.ka_start.upto(@schedule.ka_end) do |time|
           each_schedule = Eachschedule.create(start: time, fin: time + 1, weekday: 'tuesday', schedule_id: @schedule.id, user_id: @schedule.user_id)
         end
       end
-      if (@schedule.sui_start.present?) && (@schedule.sui_end.present?)
+      if @schedule.sui_start && @schedule.sui_end
         @schedule.sui_start.upto(@schedule.sui_end) do |time|
           each_schedule = Eachschedule.create(start: time, fin: time + 1, weekday: 'wednesday', schedule_id: @schedule.id, user_id: @schedule.user_id)
         end
       end
-      if (@schedule.moku_start.present?) && (@schedule.moku_end.present?)
+      if @schedule.moku_start && @schedule.moku_end
         @schedule.moku_start.upto(@schedule.moku_end) do |time|
           each_schedule = Eachschedule.create(start: time, fin: time + 1, weekday: 'thursday', schedule_id: @schedule.id, user_id: @schedule.user_id)
         end
       end
-      if (@schedule.kin_start.present?) && (@schedule.kin_end.present?)
+      if @schedule.kin_start && @schedule.kin_end
         @schedule.kin_start.upto(@schedule.kin_end) do |time|
           each_schedule = Eachschedule.create(start: time, fin: time + 1, weekday: 'friday', schedule_id: @schedule.id, user_id: @schedule.user_id)
         end
       end
-      if (@schedule.doyou_start.present?) && (@schedule.doyou_end.present?)
+      if @schedule.doyou_start && @schedule.doyou_end
         @schedule.doyou_start.upto(@schedule.doyou_end) do |time|
           each_schedule = Eachschedule.create(start: time, fin: time + 1, weekday: 'saturday', schedule_id: @schedule.id, user_id: @schedule.user_id)
         end
       end
-      if (@schedule.niti_start.present?) && (@schedule.niti_end.present?)
+      if @schedule.niti_start && @schedule.niti_end
         @schedule.niti_start.upto(@schedule.niti_end) do |time|
           each_schedule = Eachschedule.create(start: time, fin: time + 1, weekday: 'sunday', schedule_id: @schedule.id, user_id: @schedule.user_id)
         end
@@ -66,7 +66,7 @@ class SchedulesController < ApplicationController
 
   def update
     if @schedule.update(schedule_params)
-      if (@schedule.getu_start) && (@schedule.getu_end)
+      if @schedule.getu_start && @schedule.getu_end
         @schedule.getu_start.upto(@schedule.getu_end) do |time|
           exist_ids = []
           each_schedule = @schedule.eachschedules.find_by(start: time, fin: time + 1, weekday: 'monday')
@@ -83,7 +83,7 @@ class SchedulesController < ApplicationController
         end
       end
       
-      if (@schedule.ka_start) && (@schedule.ka_end)
+      if @schedule.ka_start && @schedule.ka_end
         @schedule.ka_start.upto(@schedule.ka_end) do |time|
           exist_ids = []
           each_schedule = @schedule.eachschedules.find_by(start: time, fin: time + 1, weekday: 'tuesday')
