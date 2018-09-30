@@ -15,6 +15,6 @@ class User < ApplicationRecord
    
   # 面接者
    has_many :appointments, dependent: :destroy
-   # has_many :match_eachschedules, through: :appointment, source: :eachschedule
+   has_many :match_eachschedules, through: :appointment, source: :eachschedule
    
 end

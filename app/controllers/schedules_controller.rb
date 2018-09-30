@@ -57,7 +57,7 @@ class SchedulesController < ApplicationController
       redirect_to mypage_user_path(current_user.id)
       flash[:notice] = '日程を登録しました'
     else
-      render 'new'
+      render 'new', notice: 'エラー'
     end
   end
   
@@ -187,8 +187,7 @@ class SchedulesController < ApplicationController
       redirect_to mypage_user_path(current_user.id)
       flash[:notice] = '日程を更新しました'
     else
-      render 'new'
-      # , flash[:notice] = 'エラー'
+      render 'new', notice: 'エラー'
     end
   end
 
